@@ -5,8 +5,8 @@ body {
 }
 
 .navbar {
+    background-image: url("navbar_background.jpg");
     overflow: hidden;
-    background-color:gray;
     position: fixed;
     top: 0;
     width: 110%;
@@ -23,7 +23,7 @@ body {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 2rem;
+    font-size: 3rem;
 }
 
 span {
