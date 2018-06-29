@@ -2,44 +2,99 @@
 body {
     margin:0;
     padding:0;
+    font-family: 'Merriweather', serif;
+    background-color: #F5FCFF;
 }
 
 .navbar {
-    background-image: url("navbar_background.jpg");
+    background-color:#D1FEFF;
     overflow: hidden;
     position: fixed;
     top: 0;
-    width: 110%;
-    float: left;
+    width: 100%;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
-    font-family: 'Merriweather', serif;
 }
 
 #logo_id {
-    float: left;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 3rem;
-}
-
-span {
-    float: left;
+    width:20rem;
+    height:4.7rem;
+    padding:1.5rem;
 }
 
 .nav {
     float: left;
-    color: #f2f2f2;
+    color: #004666;
     text-align: center;
-    padding: 14px 16px;
+    padding: 1.5rem;
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 2rem;
+    border-radius: 25px;
 }
   
 .nav:hover {
-    background: #ddd;
-    color: black;
+    background: #004666;
+    color: #ddd;
+    animation: fadeInLoad .3s;
+}
+
+@keyframes fadeInLoad {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+main {
+    padding: 5rem;
+    margin-top: 7rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+ul {
+    background-color: #C2FFDA;
+    padding: 2rem;
+    margin: 1rem;
+    border-radius: 50px;
+}
+
+h1 {
+    font-size: 2rem;
+    padding: 1rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+li {
+    font-size: 1rem;
+    padding: .5rem;
+    margin-left: 4rem;
+}
+
+.slideshow {
+    padding: 2rem;
+}
+
+.slides {
+    animation: fadeInLoad .7s;
+}
+
+@keyframes fadeInLoad {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
 }
