@@ -52,17 +52,25 @@ body {
 
 #homeSection_id {
     padding: 5rem;
-    margin-top: 3rem;
-    background-color: lightgreen;
+    margin-top: 4rem;
+    background-color: #B3FFD7;
     color: #007029;
 }
 
 .home {
-    background-color: #C2FFDA;
+    background-color: #DBFFDF;
     padding: 1.5rem;
     margin: 2rem;
     border-radius: 50px;
     max-width:70rem;
+}
+
+.section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    max-width: 90%;
 }
 
 .slideshow {
@@ -77,12 +85,19 @@ body {
     width: 22rem;
 }
 
-#home1_id, #home2_id {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    max-width: 90%;
+#programsSection_id {
+    padding: 5rem;
+    margin-top: 0rem;
+    background-color: #B3F4FF;
+    color: #0041B3;
+}
+
+.programs {
+    background-color:lightblue;
+    padding: 1.5rem;
+    margin: 2rem;
+    border-radius: 50px;
+    max-width:70rem;
 }
 
 ul {
@@ -93,11 +108,16 @@ ul {
 }
 
 h1 {
+    font-size: 5rem;
+    padding:0;
+}
+
+h2 {
     font-size: 2rem;
     padding: .25rem;
 }
 
-h2 {
+h3 {
     font-size: 1.5rem;
     padding: .25rem;
 }
