@@ -2,7 +2,7 @@ class App {
     constructor () {
         this.currentIndex = 0;
         this.pictures = document.getElementsByClassName("slides");
-        this.carousel()
+        //this.carousel()
     }
 
     carousel() {
