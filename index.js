@@ -19,18 +19,19 @@ class App {
 
     scrollIntoView (el_id) {
         const element = document.querySelector(`#${el_id}`)
-        element.scrollIntoView({behavior: "smooth", block: "start"})
+        
+        element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
     }
 
     renderItems() {
         for(let i = 0; i < this.navButtons.length; i++) {
             if (this.navButtons[i].innerHTML == "Home") {
                 this.navButtons[i]
-                    .addEventListener('click', this.scrollIntoView.bind(this, "homeScroll_id"))
+                    .addEventListener('click', this.scrollIntoView.bind(this, "home_id"))
             }
             else if (this.navButtons[i].innerHTML == "Programs") {
                 this.navButtons[i]
-                    .addEventListener('click', this.scrollIntoView.bind(this, "programsScroll_id"))
+                    .addEventListener('click', this.scrollIntoView.bind(this, "programs_id"))
             }
         }
     }

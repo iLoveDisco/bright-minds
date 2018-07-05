@@ -3,7 +3,16 @@ body {
     margin:0;
     padding:0;
     font-family: 'Merriweather', serif;
-    background-color: #E5FCFF;
+    background: url(art-bg.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
 }
 
 .navbar {
@@ -17,7 +26,10 @@ body {
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
+    z-index: 10;
+    opacity: .97;
 }
+
 
 #logo_id {
     width:20rem;
@@ -50,19 +62,18 @@ body {
     }
 }
 
-#homeSection_id {
-    padding: 5rem;
-    margin-top: 4rem;
-    background-color: #B3FFD7;
-    color: #007029;
+#home_id {
+    margin-top:5rem;
 }
 
 .home {
-    background-color: #DBFFDF;
-    padding: 1.5rem;
-    margin: 2rem;
-    border-radius: 50px;
-    max-width:70rem;
+    background-color: #ADFFBF;
+    color: #005700;
+}
+
+.programs {
+    background-color:lightblue;
+    color: #0041B3;
 }
 
 .section {
@@ -70,46 +81,50 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    max-width: 90%;
+    flex-wrap: wrap;
+    max-width: 80rem;
+    margin: 0rem;padding: 0rem;
+}
+
+.bubble {
+    margin: 2rem;
+    padding: 2rem;
+    border-radius: 50px;
+    max-width:40rem;
+    opacity: .95;
 }
 
 .slideshow {
-    max-width: 33rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 90%;
+    opacity: .99;
 }
 
 .slides {
-    opacity: 1.0;
     border-radius: 25px;
-    margin-left:3rem;
-    margin-right:3rem;
-    width: 22rem;
-}
-
-#programsSection_id {
-    padding: 5rem;
-    margin-top: 0rem;
-    background-color: #B3F4FF;
-    color: #0041B3;
-}
-
-.programs {
-    background-color:lightblue;
-    padding: 1.5rem;
-    margin: 2rem;
-    border-radius: 50px;
-    max-width:70rem;
+    max-width: 22rem;
+    margin: 1rem;
 }
 
 ul {
-    padding: .5rem;
-    margin: .25rem;
-    border-radius: 50px;
     list-style-type: none;
 }
 
 h1 {
     font-size: 5rem;
-    padding:0;
+    padding:0rem;
+    margin-bottom: 0rem;
+    padding-bottom: 0rem;
+    margin-top:8rem;
+    opacity: .9;
+
+    padding: 2rem;
+    border-radius: 15px 50px 15px;
+    max-width:40rem;
+    color: #004666;
 }
 
 h2 {
@@ -136,4 +151,16 @@ p {
     font-size: 1rem;
     padding: .25rem;
     line-height: 2;
+    max-width: 90%;
+}
+
+span {
+    font-size:2rem;
+    padding:0rem; margin: 0rem;
+}
+
+main {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding-left: 3rem;
+    padding-right: 3rem;
 }
