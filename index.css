@@ -32,8 +32,8 @@ body {
 
 
 #logo_id {
-    width:20rem;
-    height:4.7rem;
+    width:15rem;
+    
     padding:1.5rem;
 }
 
@@ -43,23 +43,15 @@ body {
     text-align: center;
     padding: 1.5rem;
     text-decoration: none;
-    font-size: 2rem;
+    font-size: 1.5rem;
     border-radius: 25px;
+    transition: background .3s; -webkit-transition: background .3s; /* For Safari 3.1 to 6.0 */
+    transition: color .3s; -webkit-transition: color .3s;
 }
   
 .nav:hover {
     background: #004666;
     color: #ddd;
-    animation: fadeInLoad .3s;
-}
-
-@keyframes fadeInLoad {
-    from {
-        opacity:0;
-    }
-    to {
-        opacity:1;
-    }
 }
 
 #home_id {
@@ -67,12 +59,12 @@ body {
 }
 
 .home {
-    background-color: rgba(141, 255, 107, 0.781);
+    background-color: rgba(141, 255, 107, 0.6);
     color: #005700;
 }
 
 .programs {
-    background-color: rgba(107, 208, 255, 0.781);
+    background-color: rgba(107, 208, 255, 0.6);
     color: #0041B3;
 }
 
@@ -128,12 +120,12 @@ h1 {
 
 h2 {
     font-size: 2rem;
-    padding: .25rem;
+    padding: 0rem;
 }
 
 h3 {
     font-size: 1.5rem;
-    padding: .25rem;
+    padding: 0rem; margin: 0rem;
 }
 
 i {
@@ -141,15 +133,15 @@ i {
 }
 
 li {
-    font-size: 1rem;
+    font-size: 1.1rem;
     padding: .5rem;
     margin-left: 2rem;
 }
 
 p {
-    font-size: 1rem;
+    font-size: 1.15rem;
     padding: .25rem;
-    line-height: 2;
+    line-height: 1.75;
     max-width: 90%;
 }
 
@@ -159,7 +151,7 @@ span {
 }
 
 main {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.97);
     padding-left: 3rem;
     padding-right: 3rem;
 }
