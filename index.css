@@ -8,11 +8,9 @@ body {
     background-attachment: fixed;
     background-repeat: no-repeat;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-
+    align-items: center;
+    flex-direction: column;
 }
 
 .navbar {
@@ -21,19 +19,20 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
+    height: 4.4rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     align-items: center;
     z-index: 10;
     opacity: .97;
+    box-shadow:0px 0px 20px grey; 
 }
 
 
 #logo_id {
-    width:15rem;
-    
+    width:20rem;
     padding:1.5rem;
 }
 
@@ -43,7 +42,7 @@ body {
     text-align: center;
     padding: 1.5rem;
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     border-radius: 25px;
     transition: background .3s; -webkit-transition: background .3s; /* For Safari 3.1 to 6.0 */
     transition: color .3s; -webkit-transition: color .3s;
@@ -54,17 +53,13 @@ body {
     color: #ddd;
 }
 
-#home_id {
-    margin-top:5rem;
-}
-
 .home {
-    background-color: rgba(141, 255, 107, 0.6);
+    background-color: rgba(141, 255, 107, 0.9);
     color: #005700;
 }
 
 .programs {
-    background-color: rgba(107, 208, 255, 0.6);
+    background-color: rgba(107, 208, 255, 0.9);
     color: #0041B3;
 }
 
@@ -74,7 +69,8 @@ body {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    max-width: 80rem;
+    max-width: 150rem;
+    width: 100rem;
     margin: 0rem;padding: 0rem;
 }
 
@@ -82,7 +78,7 @@ body {
     margin: 2rem;
     padding: 2rem;
     border-radius: 50px;
-    max-width:40rem;
+    max-width:55rem;
 }
 
 .slideshow {
@@ -96,7 +92,7 @@ body {
 
 .slides {
     border-radius: 25px;
-    max-width: 22rem;
+    max-width: 20rem;
     margin: 1rem;
 }
 
@@ -119,27 +115,27 @@ h1 {
 }
 
 h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     padding: 0rem;
 }
 
 h3 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     padding: 0rem; margin: 0rem;
+    
 }
 
 i {
-    padding-right: 1rem;
+    padding-right: .5rem;
 }
 
 li {
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     padding: .5rem;
-    margin-left: 2rem;
 }
 
 p {
-    font-size: 1.15rem;
+    font-size: 1.5rem;
     padding: .25rem;
     line-height: 1.75;
     max-width: 90%;
@@ -151,7 +147,47 @@ span {
 }
 
 main {
-    background-color: rgba(255, 255, 255, 0.97);
+    background-color: rgba(255, 255, 255, 0.7);
     padding-left: 3rem;
     padding-right: 3rem;
 }
+
+.learnMore {
+    font-size: 1.5rem;
+    padding: 0rem; margin: 0rem;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+
+.learnMore_drop {
+    max-height:0px;
+    overflow: hidden;
+    -webkit-transition: max-height .5s ease-in-out;
+    -moz-transition: max-height .5s ease-in-out;
+    -o-transition: max-height .5s ease-in-out;
+    transition: max-height .5s ease-in-out;
+    visibility: hidden;
+
+    transition: background-color .5s; -webkit-transition: background-color .5s; /* For Safari 3.1 to 6.0 */
+    transition: max-height .5s; -webkit-transition: max-height .5s;
+}
+
+.learnMore_drop.in {
+    visibility: visible;
+    max-height:1000px;
+    background-color: rgba(93, 183, 224, 0.6);
+    border-radius: 25px;
+    padding: .75rem;
+    animation: sweep .5s ease-in-out;
+}
+
+@keyframes sweep {
+    0%    {opacity: 0; margin-left: -10px}
+    100%  {opacity: 1; margin-left: 0px}
+  }

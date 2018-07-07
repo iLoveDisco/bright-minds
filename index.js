@@ -4,7 +4,6 @@ class App {
         this.pictures = document.getElementsByClassName("slides");
         this.navButtons = document.getElementsByClassName("nav");
         this.renderItems()
-        //this.carousel()
     }
 
     carousel() {
@@ -23,18 +22,21 @@ class App {
         element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
     }
 
+    dropDown () {
+        $('.learnMore').click(function (event) {
+            event.preventDefault();
+            $(this).next('.learnMore_drop').toggleClass('in');
+        })    
+    }
+
     renderItems() {
+        const navButtonIds = ["home_id", "programs_id", "parents_id", "contact_id"];
         for(let i = 0; i < this.navButtons.length; i++) {
-            if (this.navButtons[i].innerHTML == "Home") {
-                this.navButtons[i]
-                    .addEventListener('click', this.scrollIntoView.bind(this, "home_id"))
-            }
-            else if (this.navButtons[i].innerHTML == "Programs") {
-                this.navButtons[i]
-                    .addEventListener('click', this.scrollIntoView.bind(this, "programs_id"))
-            }
+            this.navButtons[i] // navButtonIds[] must have same order as nav bar
+                .addEventListener('click', this.scrollIntoView.bind(this, navButtonIds[i]));
         }
+
+        this.dropDown();
     }
 }
-
-const app = new App()
+const app = new App() 
