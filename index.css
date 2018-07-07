@@ -11,6 +11,8 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    flex-wrap: wrap;
+   
 }
 
 .navbar {
@@ -19,7 +21,7 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    height: 4.4rem;
+    
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -32,25 +34,24 @@ body {
 
 
 #logo_id {
-    width:20rem;
-    padding:1.5rem;
+    width:20vw;
 }
 
 .nav {
     float: left;
     color: #004666;
     text-align: center;
-    padding: 1.5rem;
+    padding: 1.15vw;
+    border-radius: 15px;
     text-decoration: none;
-    font-size: 1.25rem;
-    border-radius: 25px;
-    transition: background .3s; -webkit-transition: background .3s; /* For Safari 3.1 to 6.0 */
-    transition: color .3s; -webkit-transition: color .3s;
+    font-size: 1.6vw;
+    transition: color .5s; -webkit-transition: color .5s;
+    transition: background-color .5s; -webkit-transition: background-color .5s;
 }
   
 .nav:hover {
-    background: #004666;
-    color: #ddd;
+    color: #85d8ff;
+    background-color:#004666;
 }
 
 .home {
@@ -69,16 +70,16 @@ body {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    max-width: 150rem;
-    width: 100rem;
-    margin: 0rem;padding: 0rem;
+    max-width: 150vw;
+    width:100vw;
+    margin: 0vw;padding: 0vw;
 }
 
 .bubble {
-    margin: 2rem;
-    padding: 2rem;
+    margin: 2vw;
+    padding: 2vw;
     border-radius: 50px;
-    max-width:55rem;
+    max-width:55vw;
 }
 
 .slideshow {
@@ -92,8 +93,8 @@ body {
 
 .slides {
     border-radius: 25px;
-    max-width: 20rem;
-    margin: 1rem;
+    max-width: 20vw;
+    margin: 1vw;
 }
 
 ul {
@@ -101,60 +102,60 @@ ul {
 }
 
 h1 {
-    font-size: 5rem;
-    padding:0rem;
-    margin-bottom: 0rem;
-    padding-bottom: 0rem;
-    margin-top:8rem;
+    font-size: 5vw;
+    padding:0vw;
+    margin-bottom: 0vw;
+    padding-bottom: 0vw;
+    margin-top:8vw;
     opacity: .9;
 
-    padding: 2rem;
+    padding: 2vw;
     border-radius: 15px 50px 15px;
-    max-width:40rem;
+    max-width:40vw;
     color: #004666;
 }
 
 h2 {
-    font-size: 2.5rem;
-    padding: 0rem;
+    font-size: 2.5vw;
+    padding: 0vw;
 }
 
 h3 {
-    font-size: 2rem;
-    padding: 0rem; margin: 0rem;
+    font-size: 2vw;
+    padding: 0vw; margin: 0vw;
     
 }
 
 i {
-    padding-right: .5rem;
+    padding-right: .5vw;
 }
 
 li {
-    font-size: 1.5rem;
-    padding: .5rem;
+    font-size: 1.5vw;
+    padding: .5vw;
 }
 
 p {
-    font-size: 1.5rem;
-    padding: .25rem;
+    font-size: 1.5vw;
+    padding: .25vw;
     line-height: 1.75;
     max-width: 90%;
 }
 
 span {
-    font-size:2rem;
-    padding:0rem; margin: 0rem;
+    font-size:2vw;
+    padding:0vw; margin: 0vw;
 }
 
 main {
     background-color: rgba(255, 255, 255, 0.7);
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding-left: 3vw;
+    padding-right: 3vw;
 }
 
 .learnMore {
-    font-size: 1.5rem;
-    padding: 0rem; margin: 0rem;
+    font-size: 1.5vw;
+    padding: 0vw; margin: 0vw;
 
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -183,7 +184,7 @@ main {
     max-height:1000px;
     background-color: rgba(93, 183, 224, 0.6);
     border-radius: 25px;
-    padding: .75rem;
+    padding: .75vw;
     animation: sweep .5s ease-in-out;
 }
 
