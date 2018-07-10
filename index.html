@@ -13,57 +13,47 @@
 
 <body>
     <div class="navbar">
-        <a class="nav" href="#welcome">Home</a>
-        <a class="nav" href="#programs">Programs</a>
         <img id="logo_id" src="logo.png">
-        <a class="nav" href="#parents">Parents</a>
-        <a class="nav" href="#contactus">Contact Us</a>
+        <div id="navs_id">  
+            <a class="nav home" href="#welcome">Home</a>
+            <a class="nav programs" href="#programs">Programs</a>
+            <a class="nav parents" href="#parents">Parents</a>
+            <a class="nav" href="#contactus">Contact Us</a>
+            <a class="nav" href="">Blog</a>
+        </div>
     </div>
 
-    <main id="home_id">
-        <div class="section">
-            <h1>Welcome!</h1>
-        </div>
-
-        <div class="section"> 
-            <ul class="home bubble">
-                <h2>An All-Inclusive, K-12 Learning Center</h2>
-                <li><i class="fas fa-bookmark"></i>Common Core Math and Reading Curriculum</li>
-                <li><i class="fas fa-book-open"></i>Enhancing Study Skills</li>
-                <li><i class="fas fa-pen"></i>Homework help</li>
-                <li><i class="fas fa-school"></i>ACT/SAT Test Prep</li>
-                <li><i class="fas fa-globe-asia"></i>Hindi, Spanish, German</li>
-                <li><i class="fas fa-palette"></i></i>Art</li>
-                <li><i class="fas fa-flask"></i>Science</li>
-                <li><i class="fas fa-calculator"></i>Advanced Mathmatics</li>
-                <li><i class="fas fa-pen-fancy"></i>Creative Writing</li>
-                <li><i class="fas fa-user-alt"></i>Coaching and Tutoring</li>
-            </ul>
+    <main id="home_id" class= "home">
+        <h1></h1>
+        <div id = "header_id">   
+            <img src="tree.png" alt="">
             
+            
+            <ul class = "home bubble">
+                <h2>Maximize your child's potential</h2>
+                <li class = "hList">Programs for ages 2-18</li>
+                <li class = "hList">One-on-one tutoring</li>
+                <li class = "hList">ACT/SAT Test Prep</li>
+            </ul>
             <div class="slideshow">
-                <img class="slides" src="slide5.png">
-                <img class="slides" src="slide2.png">
             </div>
         </div>
 
-        <div class="section">
+        <div id="header_id">
+            <div class="home bubble">
+                <h3>"Brighter Minds....Brighter Future"</h3>
+                <p>
+                    Bright Minds is an all-inclusive learning center, which aims to train children to become more confident, creative, and self-reliant learners, and to excel in all areas of studies and achieve higher goals
+                </p>
+            </div>
             <div class="slideshow">
                 <img class="slides" src="slide1.png">
             </div>
-            <div class="home bubble">
-                <h2>"Brighter Minds....Brighter Future"</h2>
-                <p>
-                    <span>B</span>right Minds Learning Academy strives to be an educational institute serving students both challenged to advanced students. 
-                    We pride ourselves in improving students' study skills 
-                    and making them academically successful as well as helping them with their overall development.
-                    Aligned with Common Core standards, Bright Minds provides a holistic approach to learning with structured activities and one-one sessions.
-                </p>
-            </div>
         </div>
     </main>
-    <main id="programs_id">
+    <main id="programs_id" class="programs">
         <div class="section">
-            <h1>Programs</h1>
+            <h1 class='programs'>Programs</h1>
         </div>
         
         <div class="section">
@@ -73,10 +63,29 @@
             <div class="programs bubble">
                 <h2><i class="fas fa-pen-square"></i>ACT/SAT Summer Enrichment</h2>
                 <p>
-                    Our ACT/ SAT programs involve individualized tutoring sessions that involve test-taking strategies, targeted practice,
+                    Our ACT/ SAT programs involve individual tutoring sessions that covers strategies, targeted practice,
                     and other methods that can signficantly improve your child's ACT/SAT score.
                     $30 Off Effective June - August 2018
                 </p>
+                <div class ="learnMore">
+                    <h3><i class="far fa-caret-square-down"></i>Proven Results</h3>
+                </div>
+                <p class="learnMore_drop">
+                    On the September, 2016 ACT Exam, our students' scores improved from: 
+                    <br> <br>
+                    Jack 26-33 <br>
+                    Wyatt 25 - 32 <br> 
+                    Sakshi 24 - 32 <br>
+                    Kimberly 20 - 27 <br>
+                    Jacob 22-30 <br> 
+                    Cameron 32-35 <br> 
+                    Simran 28-32-36 <br> 
+                    James 28-33 <br> 
+                    Victoria 21-27 <br>
+                    <br> 
+                    Nathan R: “I went to Bright Minds with a score of 24. After their help and instruction my score went up to 33. Bright Minds instructors really helped me score higher. I received $25,000 scholarship at OSU Bio Medical Honors Program, my 1st choice college.”
+                </p>
+
             </div>  
         </div>
 
@@ -97,13 +106,12 @@
             </div>
             <div class="slideshow">
                 <img class="slides" src="math.jpg" alt="">
-                <img class="slides" src="math2.png" alt="">
             </div>
         </div>
 
         <div class="section">
             <div class="slideshow">
-                <img class="slides" src="reading.jpg" alt="">
+                <img class="slides" src="abc.jpg" alt="">
             </div>
             <div class="programs bubble">
                 <h2><i class="fas fa-book-open"></i>Reading</h2>
@@ -126,9 +134,31 @@
         </div>
     </main>
 
-    <main id="parents_id">
-        <h1>Parents</h1>
-
+    <main id="parents_id" class="parents">
+        <div class="section">
+            <h1 class = "parents">Parents</h1>
+        </div>
+        <div class="section">
+            <img class="slides"src="parent.jpg" alt="">
+            <div class="parents bubble">
+                <h2><i class="fas fa-user"></i>We Need <u>Your</u> Help!</h2>
+                <p>
+                    Parents, one of the most important components of the success of Bright Minds students is our emphasis on parent collaboration.
+                </p>
+            </div>
+        </div>
+        <div class="section">
+            <div class="parents bubble">
+                <h2>Parents must ...</h2>
+                <ul class="parents">
+                    <li>Guide their children in completion of daily assignmnets</li>
+                    <li>Grading and helping them with corrections</li>
+                    <li>Encourage their children to be more positive</li>
+                    <li>Praise their children for their daily efforts</li>
+                </ul>
+            </div>
+            <img class = "slides" src="child-bg.jpg" alt="">
+        </div>
     </main>
 </body>
 
