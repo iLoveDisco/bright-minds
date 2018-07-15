@@ -30,7 +30,7 @@ class App {
     }
 
     renderItems() {
-        const navButtonIds = ["home_id", "programs_id", "parents_id", "contact_id"];
+        const navButtonIds = ["home_id", "programs_id", "parents_id", "contact_id", "blog_id"];
         for(let i = 0; i < this.navButtons.length; i++) {
             this.navButtons[i] // navButtonIds[] must have same order as nav bar
                 .addEventListener('click', this.scrollIntoView.bind(this, navButtonIds[i]));

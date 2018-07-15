@@ -18,7 +18,7 @@
             <a class="nav programs" href="#programs">Programs</a>
             <a class="nav parents" href="#parents">Parents</a>
             <a class="nav contact" href="#contactus">Contact Us</a>
-            <a class="nav" href="">Blog</a>
+            <a class="nav blogColor" href="#blog">Blog</a>
         </div>
     </div>
 
@@ -111,15 +111,6 @@
                     Does he/she guess at words instead of sounding them out? 
                     Then our program, “Learning to Read” is just right for him!
                 </p>
-                <div class ="learnMore">
-                    <i class="far fa-caret-square-down"></i> Learn more 
-                </div>
-                <p class="learnMore_drop">
-                    Learning to Read means breaking the alphabetic code. 
-                    Our word builder booklets provide a step-by-step program with ample practice that allows the student to combine phonetic sounds to decode words. 
-                    Research concludes that students who are skilled decoders are shown to have increased fluency and improved comprehension. 
-                    The Dolch sight words are also included in the program. Since these words are studied in first and second grades, children who master them have a good base for beginning reading.
-                </p>
             </div>
         </div>
     </main>
@@ -166,6 +157,36 @@
         </div>
         
     </main>
+    <main id="blog_id" class="blogColor">
+        <button id="signIn_id">Sign In</button>
+        <div class="section">
+            <h1 class="blogColor">Blog</h1>
+        </div>
+    </main>
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyDWDSwJOvpioSAIFWF20OKdVDAXjJl6smE",
+        authDomain: "bright-minds-1531248372967.firebaseapp.com",
+        databaseURL: "https://bright-minds-1531248372967.firebaseio.com",
+        projectId: "bright-minds-1531248372967",
+        storageBucket: "bright-minds-1531248372967.appspot.com",
+        messagingSenderId: "757275872031"
+    };
+    firebase.initializeApp(config);
+
+    const googleProvider = new firebase.auth.GoogleAuthProvider();
+
+    authenticateGoogle = () => {
+        firebase.auth().signInWithPopup(googleProvider)
+    }
+
+    const signInButton = document.querySelector("#signIn_id");
+    signInButton.addEventListener('click', authenticateGoogle);
+
+
+    </script>
 </body>
 
 <script src="index.js"></script>

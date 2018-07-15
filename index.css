@@ -80,10 +80,6 @@ body {
 }
 
 #home_id {
-    background: url(child-bg.jpg);
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
     
 }
 
@@ -97,6 +93,7 @@ body {
 .home {
     
     color:#1a1a1a;
+    background-color: rgb(252, 252, 252);
     list-style-type: none;
 }
 
@@ -106,13 +103,18 @@ body {
 }
 
 .parents {
-    background-color: rgba(234, 199, 255, 1);
-    color: rgb(132, 31, 190);
+    background-color: #ADFFF8;
+    color: #0F5752;
 }
 
 .contact {
     background-color: rgb(224, 255, 199);
     color: rgb(46, 151, 25);
+}
+
+.blogColor {
+    background-color: rgba(234, 199, 255, 1);
+    color: rgb(132, 31, 190);
 }
 
 .section {
