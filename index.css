@@ -237,6 +237,14 @@ main {
     padding-right: 3vw;
 }
 
+button {
+    font-size: 1.5vw;
+    color: white;
+    padding: 1vw;
+    border-radius: .5vw;
+    border: 1px solid white;
+}
+
 .learnMore {
     padding: 0vw; margin: 0vw;
 
@@ -276,8 +284,6 @@ main {
     font-size: 1.2rem;
     line-height: 2vw;
 }
-
-
 
 @keyframes sweep {
     0%    {opacity: 0; margin-left: -10px}

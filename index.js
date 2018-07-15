@@ -3,7 +3,10 @@ class App {
         this.currentIndex = 0;
         this.pictures = document.getElementsByClassName("slides");
         this.navButtons = document.getElementsByClassName("nav");
-        this.renderItems()
+        this.signInButton = document.getElementsByClassName("#signIn_id");
+        this.email = "";
+        this.renderItems();
+        this.initializeFireBase();
     }
 
     carousel() {
@@ -22,21 +25,60 @@ class App {
         element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
     }
 
-    dropDown () {
+    renderDropDown () {
         $('.learnMore').click(function (event) {
             event.preventDefault();
             $(this).next('.learnMore_drop').toggleClass('in');
         })    
     }
 
-    renderItems() {
+    authenticateGoogle () {
+        const googleProvider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(googleProvider);
+    }
+
+    signIn () {
+
+    }
+
+    initializeFireBase () {
+        // Initialize Firebase
+        const config = {
+            apiKey: "AIzaSyDWDSwJOvpioSAIFWF20OKdVDAXjJl6smE",
+            authDomain: "bright-minds-1531248372967.firebaseapp.com",
+            databaseURL: "https://bright-minds-1531248372967.firebaseio.com",
+            projectId: "bright-minds-1531248372967",
+            storageBucket: "bright-minds-1531248372967.appspot.com",
+            messagingSenderId: "757275872031"
+        };
+        firebase.initializeApp(config);
+
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                this.email = user.email;
+            } else {
+                // No user is signed in.
+            }
+        });
+    }
+
+    renderSignIn () {
+        const signInButton = document.querySelector("#signIn_id");
+        signInButton.addEventListener('click', this.authenticateGoogle);
+    }
+
+    renderNavButtons() {
         const navButtonIds = ["home_id", "programs_id", "parents_id", "contact_id", "blog_id"];
         for(let i = 0; i < this.navButtons.length; i++) {
             this.navButtons[i] // navButtonIds[] must have same order as nav bar
                 .addEventListener('click', this.scrollIntoView.bind(this, navButtonIds[i]));
         }
+    }
 
-        this.dropDown();
+    renderItems() {
+        this.renderNavButtons ();
+        this.renderDropDown();
+        this.renderSignIn();
     }
 }
 

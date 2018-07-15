@@ -158,40 +158,47 @@
         
     </main>
     <main id="blog_id" class="blogColor">
-        <button id="signIn_id">Sign In</button>
         <div class="section">
             <h1 class="blogColor">Blog</h1>
+        </div>
+        <div class="section">
+
+        </div>
+
+        <form>
+            <input
+                type="text"
+                name="nameOfPlace"
+                placeholder="Enter a location"
+                autofocus
+            > <br>
+            
+            <input
+                type="text"
+                name="descriptionOfPlace"
+                placeholder="Enter a short description"
+                autofocus
+            >
+            <button style = 'display: none' type="submit"> Add </button>
+        </form>
+
+        <div class="blogForm">
+            <span contentEditable = 'true' class="name"></span>
+            <p contentEditable = 'true' class="desc" 
+                style ="text-indent: 5%;
+                        font-size: 1.5rem;
+                        margin-left: 15vw;">
+                    </p>
+        </div>
+
+        <div class="section">
+            <button id="signIn_id" class= "home">Sign In</button>
+            <button id="signOut_id" class="home"><i class="fas fa-sign-out-alt"></i></button>
         </div>
     </main>
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
     <script>
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyDWDSwJOvpioSAIFWF20OKdVDAXjJl6smE",
-        authDomain: "bright-minds-1531248372967.firebaseapp.com",
-        databaseURL: "https://bright-minds-1531248372967.firebaseio.com",
-        projectId: "bright-minds-1531248372967",
-        storageBucket: "bright-minds-1531248372967.appspot.com",
-        messagingSenderId: "757275872031"
-    };
-    firebase.initializeApp(config);
-
-    const googleProvider = new firebase.auth.GoogleAuthProvider();
-
-    authenticateGoogle = () => {
-        firebase.auth().signInWithPopup(googleProvider);
-    }
-
-    const signInButton = document.querySelector("#signIn_id");
-    signInButton.addEventListener('click', authenticateGoogle);
-
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-            alert(user.email)
-        } else {
-            // No user is signed in.
-        }
-    });
+        
 
 
     </script>
