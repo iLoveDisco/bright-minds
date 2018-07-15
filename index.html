@@ -179,11 +179,19 @@
     const googleProvider = new firebase.auth.GoogleAuthProvider();
 
     authenticateGoogle = () => {
-        firebase.auth().signInWithPopup(googleProvider)
+        firebase.auth().signInWithPopup(googleProvider);
     }
 
     const signInButton = document.querySelector("#signIn_id");
     signInButton.addEventListener('click', authenticateGoogle);
+
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            alert(user.email)
+        } else {
+            // No user is signed in.
+        }
+    });
 
 
     </script>
