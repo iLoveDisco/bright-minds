@@ -4,9 +4,10 @@ class App {
         this.pictures = document.getElementsByClassName("slides");
         this.navButtons = document.getElementsByClassName("nav");
         this.signInButton = document.getElementsByClassName("#signIn_id");
-        this.email = "";
+        this.email = "erictu32@gmail.com";
         this.renderItems();
         this.initializeFireBase();
+        this.handleEmailChange();
     }
 
     carousel() {
@@ -25,6 +26,16 @@ class App {
         element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
     }
 
+    handleEmailChange () {
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                this.email = user.email;
+            } else {
+                // No user is signed in.
+            }
+        });
+    }
+
     renderDropDown () {
         $('.learnMore').click(function (event) {
             event.preventDefault();
@@ -37,29 +48,17 @@ class App {
         firebase.auth().signInWithPopup(googleProvider);
     }
 
-    signIn () {
-
-    }
-
     initializeFireBase () {
         // Initialize Firebase
         const config = {
-            apiKey: "AIzaSyDWDSwJOvpioSAIFWF20OKdVDAXjJl6smE",
-            authDomain: "bright-minds-1531248372967.firebaseapp.com",
-            databaseURL: "https://bright-minds-1531248372967.firebaseio.com",
-            projectId: "bright-minds-1531248372967",
-            storageBucket: "bright-minds-1531248372967.appspot.com",
-            messagingSenderId: "757275872031"
+            apiKey: "nice try lol",
+            authDomain: "nice try lol",
+            databaseURL: "nice try lol",
+            projectId: "nice try lol",
+            storageBucket: "nice try lol",
+            messagingSenderId: "nice try lol"
         };
         firebase.initializeApp(config);
-
-        firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {
-                this.email = user.email;
-            } else {
-                // No user is signed in.
-            }
-        });
     }
 
     renderSignIn () {
