@@ -160,18 +160,18 @@
         <div class="section-row">
             <h1 class="blogColor">Blog</h1>
         </div>
-        <form class="section-column">
+        <button id="signIn_id" class= "home" style="display: block">Sign In</button>
+        <form class="section-column" autocomplete="off">
             <div class="section-row">
-                <button id="signIn_id" class= "home" style="display: block">Sign In</button>
                 <button id="signOut_id" class="home" style="display: none">
                     <img src="" style="max-width: 5vw" alt="" id= "avatar_id">
                 </button>
-                <input type="text" class="articleTitle" placeholder="Enter the Title">
+                <input type="text" id= "titleTextBox_id" class="articleTitle" placeholder="Enter the Title">
                 <button type="submit"> Add </button>
             </div>
-            <textarea rows="10" cols="50" class="textBox" placeholder="Enter a description"></textarea>
+            <textarea rows="10" cols="50" class="textBox" id="descTextBox_id"placeholder="Enter a description"></textarea>
         </form>
-        <div class= "articles">
+        <div id="blogList_id" class= "home section-column">
             
         </div>
     </main>

@@ -95,6 +95,7 @@ body {
     padding: 0vw;
     margin-bottom: 3vw;
     border-radius: .5vw;
+    max-width: 60vw;
 }
 
 .hList {

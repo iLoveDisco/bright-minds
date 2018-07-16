@@ -6,7 +6,11 @@ class App {
         this.signInButton = document.querySelector("#signIn_id");
         this.signOutButton = document.querySelector("#signOut_id");
         this.avatarPic = document.querySelector("#avatar_id");
-        this.email = "erictu32@gmail.com";
+        this.blogList = document.querySelector("#blogList_id");
+        this.titleTextBox = document.querySelector("#titleTextBox_id");
+        this.descTextBox = document.querySelector("#descTextBox_id");
+
+        this.entries = [];
         this.user = "";
         
         this.initializeFireBase();
@@ -63,7 +67,39 @@ class App {
         }.bind(this));
     }
 
-    authenticateGoogle () {
+    handleSubmit (ev) {
+        ev.preventDefault();
+        const entry = {
+            title: this.titleTextBox.value,
+            desc: this.descTextBox.value,
+        }
+        this.addEntry(entry)
+    }
+
+    addEntry(entry) {
+        this.entries.push(entry);
+        const item = this.renderEntry(entry);
+        this.blogList.appendChild(item);
+    }
+
+    renderEntry(entry) {
+        const item = document.createElement("div");
+        const titleNode = this.createNode(entry.title, "h2");
+        const descNode = this.createNode(entry.desc, "p");
+        item.appendChild(titleNode);
+        item.appendChild(descNode);
+
+        return item;
+    }
+
+    createNode(content, element) {
+        const node = document.createElement(element);
+        const contentNode = document.createTextNode(content);
+        node.appendChild(contentNode);
+        return node;
+    } 
+
+    signIn () {
         const googleProvider = new firebase.auth.GoogleAuthProvider();
         googleProvider.setCustomParameters({
             prompt: 'select_account'
@@ -78,16 +114,23 @@ class App {
     }
 
     renderSignIn () {
-        this.signInButton.addEventListener('click', this.authenticateGoogle);
+        this.signInButton.addEventListener('click', this.signIn);
     }
 
     renderSignOut () {
         this.signOutButton.addEventListener('click', this.signOut);
     }
 
-    
+    renderForm () {
+        const form = document.querySelector('form')
+        form.addEventListener('submit', (ev) => {
+            ev.preventDefault()
+            this.handleSubmit(ev);
+        })
+    }
 
     renderItems() {
+        this.renderForm();
         this.renderNavButtons ();
         this.renderDropDown();
         this.renderSignIn();
