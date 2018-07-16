@@ -10,7 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
-<body class = "blogColor">
+<body class = "contact">
     <div class="navbar">
         <img id="logo_id" src="logo.png">
         <div id="navs_id">  
@@ -154,21 +154,19 @@
             </ul>
             <img src="map.png" alt="">
         </div>
-        
     </main>
+
     <main id="blog_id" class="blogColor">
         <div class="section-row">
             <h1 class="blogColor">Blog</h1>
         </div>
-        <div class="section-row">
-            <button id="signIn_id" class= "home">Sign In</button>
-            <button id="signOut_id" class="home" style="display :none"><i class="fas fa-sign-out-alt"></i></button>
-            <img src="parent.jpg" class="slides" alt="" id= "avatar_id" style="display: none">
-        </div>
-
         <form class="section-column">
             <div class="section-row">
-                <input type="text" class="articleTitle" placeholder="Enter the Article title">
+                <button id="signIn_id" class= "home" style="display: block">Sign In</button>
+                <button id="signOut_id" class="home" style="display: none">
+                    <img src="" style="max-width: 5vw" alt="" id= "avatar_id">
+                </button>
+                <input type="text" class="articleTitle" placeholder="Enter the Title">
                 <button type="submit"> Add </button>
             </div>
             <textarea rows="10" cols="50" class="textBox" placeholder="Enter a description"></textarea>
