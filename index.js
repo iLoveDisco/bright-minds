@@ -4,20 +4,20 @@ class App {
         this.pictures = document.getElementsByClassName("slides");
         this.navButtons = document.getElementsByClassName("nav");
         this.signInButton = document.getElementsByClassName("#signIn_id");
+        this.signOutButton = document.querySelector("#signOut_id");
         this.email = "erictu32@gmail.com";
-        this.renderItems();
+        this.user = "";
         this.initializeFireBase();
-        this.handleEmailChange();
+        this.renderItems();
+        this.handleUserChange();
     }
 
-    carousel() {
-        for (let i = 0; i < this.pictures.length; i++) {
-           this.pictures[i].style.display = "none";  
-        }
-        this.currentIndex++;
-        if (this.currentIndex > this.pictures.length) {this.currentIndex = 1}    
-        this.pictures[this.currentIndex - 1].style.display = "";
-        setTimeout(this.carousel.bind(this), 7000); // Change image every 2 seconds
+    initializeFireBase () {
+        // Initialize Firebase
+        const config = {
+            
+        };
+        firebase.initializeApp(config);
     }
 
     scrollIntoView (el_id) {
@@ -26,10 +26,13 @@ class App {
         element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
     }
 
-    handleEmailChange () {
+    handleUserChange () {
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
                 this.email = user.email;
+                this.user = user;
+                const avatarPic = document.querySelector("#avatar_id");
+                avatarPic.src = user.photoURL;
             } else {
                 // No user is signed in.
             }
@@ -48,22 +51,17 @@ class App {
         firebase.auth().signInWithPopup(googleProvider);
     }
 
-    initializeFireBase () {
-        // Initialize Firebase
-        const config = {
-            apiKey: "nice try lol",
-            authDomain: "nice try lol",
-            databaseURL: "nice try lol",
-            projectId: "nice try lol",
-            storageBucket: "nice try lol",
-            messagingSenderId: "nice try lol"
-        };
-        firebase.initializeApp(config);
+    signOut () {
+        firebase.auth().signOut();
+        location.reload();
     }
 
     renderSignIn () {
-        const signInButton = document.querySelector("#signIn_id");
-        signInButton.addEventListener('click', this.authenticateGoogle);
+        this.signInButton.addEventListener('click', this.authenticateGoogle);
+    }
+
+    renderSignOut () {
+        this.signOutButton.addEventListener('click', this.signOut);
     }
 
     renderNavButtons() {
@@ -78,6 +76,7 @@ class App {
         this.renderNavButtons ();
         this.renderDropDown();
         this.renderSignIn();
+        this.renderSignOut();
     }
 }
 

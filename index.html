@@ -10,7 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
-<body>
+<body class = "blogColor">
     <div class="navbar">
         <img id="logo_id" src="logo.png">
         <div id="navs_id">  
@@ -24,7 +24,7 @@
 
     <main id="home_id" class= "home">
         <h1></h1>
-        <div id = "header_id">   
+        <div class= "homeSection">   
             <img src="tree.png" alt="" style="max-width:35vw;">
             <ul class = "home bubble">
                 <h2>Excellence Beyond the Classroom</h2>
@@ -35,7 +35,7 @@
             </div>
         </div>
 
-        <div id="header_id">
+        <div class= "homeSection">
             <div class="home bubble">
                 <h3>"Brighter Minds....Brighter Future"</h3>
                 <p>
@@ -48,11 +48,10 @@
         </div>
     </main>
     <main id="programs_id" class="programs">
-        <div class="section">
+        <div class="section-row">
             <h1 class='programs'>Programs</h1>
         </div>
-        
-        <div class="section">
+        <div class="section-row">
             <div class="slideshow">
                 <img class="slides" src="actLogo.jpg" alt="">
             </div>
@@ -86,7 +85,7 @@
             </div>  
         </div>
 
-        <div class="section">
+        <div class="section-row">
             <div class="programs bubble">
                 <h2><i class="fas fa-calculator"></i>Math Enrichment</h2>
                 <p>
@@ -99,7 +98,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section-row">
             <div class="slideshow">
                 <img class="slides" src="abc.jpg" alt="">
             </div>
@@ -116,10 +115,10 @@
     </main>
 
     <main id="parents_id" class="parents">
-        <div class="section">
+        <div class="section-row">
             <h1 class = "parents">Parents</h1>
         </div>
-        <div class="section">
+        <div class="section-row">
             <img class="slides"src="parent.jpg" alt="">
             <div class="parents bubble">
                 <h2><i class="fas fa-user"></i>We Need <u>Your</u> Help!</h2>
@@ -128,7 +127,7 @@
                 </p>
             </div>
         </div>
-        <div class="section">
+        <div class="section-row">
             <div class="parents bubble">
                 <h2>Parents must ...</h2>
                 <ul class="parents">
@@ -143,10 +142,10 @@
     </main>
 
     <main id="contact_id" class="contact">
-        <div class="section">
+        <div class="section-row">
             <h1 class = "contact">Contact Us</h1>
         </div>
-        <div class="section">
+        <div class="section-row">
             <ul>
                 <h3><i class="fas fa-phone"></i>1-330-966-7226</h3>
                 <h3><i class="fas fa-map-marker-alt"></i>4900 Frank Rd. NW, <br>North Canton, OH 44720</h3>
@@ -158,50 +157,27 @@
         
     </main>
     <main id="blog_id" class="blogColor">
-        <div class="section">
+        <div class="section-row">
             <h1 class="blogColor">Blog</h1>
         </div>
-        <div class="section">
-
-        </div>
-
-        <form>
-            <input
-                type="text"
-                name="nameOfPlace"
-                placeholder="Enter a location"
-                autofocus
-            > <br>
-            
-            <input
-                type="text"
-                name="descriptionOfPlace"
-                placeholder="Enter a short description"
-                autofocus
-            >
-            <button style = 'display: none' type="submit"> Add </button>
-        </form>
-
-        <div class="blogForm">
-            <span contentEditable = 'true' class="name"></span>
-            <p contentEditable = 'true' class="desc" 
-                style ="text-indent: 5%;
-                        font-size: 1.5rem;
-                        margin-left: 15vw;">
-                    </p>
-        </div>
-
-        <div class="section">
+        <div class="section-row">
             <button id="signIn_id" class= "home">Sign In</button>
-            <button id="signOut_id" class="home"><i class="fas fa-sign-out-alt"></i></button>
+            <button id="signOut_id" class="home" style="display :none"><i class="fas fa-sign-out-alt"></i></button>
+            <img src="parent.jpg" class="slides" alt="" id= "avatar_id" style="display: none">
+        </div>
+
+        <form class="section-column">
+            <div class="section-row">
+                <input type="text" class="articleTitle" placeholder="Enter the Article title">
+                <button type="submit"> Add </button>
+            </div>
+            <textarea rows="10" cols="50" class="textBox" placeholder="Enter a description"></textarea>
+        </form>
+        <div class= "articles">
+            
         </div>
     </main>
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
-    <script>
-        
-
-
-    </script>
 </body>
 
 <script src="index.js"></script>
