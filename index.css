@@ -285,31 +285,57 @@ main {
     100%  {opacity: 1; margin-left: 0px}
   }
 
+#form_id {
+    background-color: lightpink;
+    padding-left: 13vw;
+    padding-right: 13vw;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+    border-radius: .5vw;
+    
+}
+
 .articleTitle {
     width: 80vw;
     height: 4vw;
     font-size: 3vw;
+    padding: 1vw;
+    margin: 1vw;
+    
 }
 
 .textBox {
-    min-width: 80vw;
+    width: 80vw;
     font-size: 1.5vw;
+    padding: 1vw;
+    border-radius: 0vw 0vw 1vw 1vw;
 }
 
 #send_id {
     font-size: 1.5vw;
     color: white;
-    padding: .5vw;
+    padding: 1vw;
+    margin: 1vw;
+    border-radius: .5vw;
+    border: 1px solid white;
+    width: 70vw;
+}
+
+#signIn_id {
+    font-size: 1.5vw;
+    color: purple;
+    background-color: lightpink;
+    padding-right: 2vw;
+    padding-top: 1.5vw;
+    padding-bottom: 1.5vw;
     margin: 1vw;
     border-radius: .5vw;
     border: 1px solid white;
 }
 
-#signIn_id {
+#signOut_id {
     font-size: 1.5vw;
-    color: white;
-    padding: .5vw;
-    margin: 1vw;
+    padding: 1vw;
     border-radius: .5vw;
     border: 1px solid white;
 }
@@ -325,6 +351,7 @@ main {
     justify-content: center;
     min-width: 80vw;
     max-width: 85vw;
+    border-radius: 2vw 0vw 2vw 0vw;
 }
 
 .blogPanel {

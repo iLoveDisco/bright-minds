@@ -7,11 +7,11 @@ class App {
         this.titleTextBox = document.querySelector("#titleTextBox_id");
         this.descTextBox = document.querySelector("#descTextBox_id");
         this.entries = [];
-        this.administrators = ["erictu32@gmail.com"];
-        this.user = null;
+        this.admins = ["erictu32@gmail.com"];
+        this.user = 'default';
         this.initializeFireBase();
-        this.renderItems();
         this.handleUserChange();
+        this.renderItems();
         this.syncEntries();
     }
 
@@ -49,27 +49,45 @@ class App {
     }
 
     handleUserChange () {
-        firebase.auth().onAuthStateChanged(function(user) {
+        firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 this.email = user.email;
                 this.user = user;
                 
                 this.avatarPic.src = user.photoURL;
 
+                // show sign out (avatar)
                 this.signInButton.style.display = "none";
                 this.signOutButton.style.display = "block";
                 
             } else {
-                // No user is signed in.
+                // show sign in
                 this.signOutButton.style.display = "none";
                 this.signInButton.style.display = "block";
-                
             }
-        }.bind(this));
+        });
+    }
+
+    renderItems() {
+        this.renderForm();
+        this.renderNavButtons ();
+        this.renderDropDown();
+        this.renderSignIn();
+        this.renderSignOut();
     }
 
     renderForm () {
-        const form = document.querySelector('form')
+        const form = document.querySelector('#form_id');
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                if(this.admins.includes(this.user.email)) {
+                    form.style.display = "visible";
+                }
+            } else {
+                form.style.display = "none";
+            }
+        });
+        
         form.addEventListener('submit', (ev) => {
             ev.preventDefault()
             this.handleSubmit(ev);
@@ -105,6 +123,7 @@ class App {
     }
 
     renderUserInfoNode () {
+        
         const userInfoNode = document.createElement("div");
         userInfoNode.setAttribute('class', 'blogBody');
         // profile picture
@@ -166,14 +185,6 @@ class App {
     renderSignOut () {
         
         this.signOutButton.addEventListener('click', this.signOut);
-    }
-
-    renderItems() {
-        this.renderForm();
-        this.renderNavButtons ();
-        this.renderDropDown();
-        this.renderSignIn();
-        this.renderSignOut();
     }
 }
 

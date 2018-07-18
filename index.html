@@ -160,17 +160,16 @@
         <div class="section-row">
             <h1 class="blogColor">Blog</h1>
         </div>
-        <form class="section-column" autocomplete="off">
-            <div class="section-row">
-                <button id="signOut_id" class="home" style="display: none">
-                    <img src="" style="max-width: 5vw" alt="" id= "avatar_id">
-                </button>
-                <input type="text" id= "titleTextBox_id" class="articleTitle" placeholder="Enter the Title">
-            </div>
+        <form id= "form_id" class="section-column" autocomplete="off">
+            <h2>Add Blog Entry</h2>
+            <input type="text" id= "titleTextBox_id" class="articleTitle" placeholder="Enter the Title">
             <textarea rows="10" cols="50" class="textBox" id="descTextBox_id"placeholder="Enter a description"></textarea>
             <button id = "send_id" type="submit"> <i class="far fa-paper-plane"></i> </button>
         </form>
         <div class="section-row">
+            <button id="signOut_id" class="home" style="display: none">
+                <img src="" style="max-width: 5vw" alt="" id= "avatar_id">
+            </button>
             <button id="signIn_id" class= "home" style="display: block" title="Sign in with Google"><i class="fab fa-google"></i>Sign In</button>
         </div>
         <div id="blogList_id" class= "home">
