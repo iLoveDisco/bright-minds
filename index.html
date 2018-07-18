@@ -160,19 +160,21 @@
         <div class="section-row">
             <h1 class="blogColor">Blog</h1>
         </div>
-        <button id="signIn_id" class= "home" style="display: block">Sign In</button>
         <form class="section-column" autocomplete="off">
             <div class="section-row">
                 <button id="signOut_id" class="home" style="display: none">
                     <img src="" style="max-width: 5vw" alt="" id= "avatar_id">
                 </button>
                 <input type="text" id= "titleTextBox_id" class="articleTitle" placeholder="Enter the Title">
-                <button type="submit"> Add </button>
             </div>
             <textarea rows="10" cols="50" class="textBox" id="descTextBox_id"placeholder="Enter a description"></textarea>
+            <button id = "send_id" type="submit"> <i class="far fa-paper-plane"></i> </button>
         </form>
-        <div id="blogList_id" class= "home section-column">
-            
+        <div class="section-row">
+            <button id="signIn_id" class= "home" style="display: block" title="Sign in with Google"><i class="fab fa-google"></i>Sign In</button>
+        </div>
+        <div id="blogList_id" class= "home">
+            <div class="blogPanel"></div>
         </div>
     </main>
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>

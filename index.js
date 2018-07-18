@@ -1,21 +1,22 @@
 class App {
     constructor () {
-        this.currentIndex = 0;
-        this.pictures = document.getElementsByClassName("slides");
-        this.navButtons = document.getElementsByClassName("nav");
         this.signInButton = document.querySelector("#signIn_id");
         this.signOutButton = document.querySelector("#signOut_id");
         this.avatarPic = document.querySelector("#avatar_id");
         this.blogList = document.querySelector("#blogList_id");
         this.titleTextBox = document.querySelector("#titleTextBox_id");
         this.descTextBox = document.querySelector("#descTextBox_id");
-
         this.entries = [];
-        this.user = "";
-        
+        this.administrators = ["erictu32@gmail.com"];
+        this.user = null;
         this.initializeFireBase();
         this.renderItems();
         this.handleUserChange();
+        this.syncEntries();
+    }
+
+    syncEntries() {
+        const database = firebase.database();
     }
 
     initializeFireBase () {
@@ -28,7 +29,6 @@ class App {
 
     scrollIntoView (el_id) {
         const element = document.querySelector(`#${el_id}`)
-        
         element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
     }
 
@@ -40,9 +40,10 @@ class App {
     }
 
     renderNavButtons() {
+        const navButtons = document.getElementsByClassName("nav");
         const navButtonIds = ["home_id", "programs_id", "parents_id", "contact_id", "blog_id"];
-        for(let i = 0; i < this.navButtons.length; i++) {
-            this.navButtons[i] // navButtonIds[] must have same order as nav bar
+        for(let i = 0; i < navButtons.length; i++) {
+            navButtons[i] // navButtonIds[] must have same order as nav bar
                 .addEventListener('click', this.scrollIntoView.bind(this, navButtonIds[i]));
         }
     }
@@ -67,6 +68,14 @@ class App {
         }.bind(this));
     }
 
+    renderForm () {
+        const form = document.querySelector('form')
+        form.addEventListener('submit', (ev) => {
+            ev.preventDefault()
+            this.handleSubmit(ev);
+        })
+    }
+
     handleSubmit (ev) {
         ev.preventDefault();
         const entry = {
@@ -84,12 +93,48 @@ class App {
 
     renderEntry(entry) {
         const item = document.createElement("div");
-        const titleNode = this.createNode(entry.title, "h2");
-        const descNode = this.createNode(entry.desc, "p");
-        item.appendChild(titleNode);
-        item.appendChild(descNode);
+        item.setAttribute('class', 'blogPanel');
+
+        const userInfoNode = this.renderUserInfoNode();
+        item.appendChild(userInfoNode);
+
+        const bodyNode = this.renderBodyNode(entry);
+        item.appendChild(bodyNode);
 
         return item;
+    }
+
+    renderUserInfoNode () {
+        const userInfoNode = document.createElement("div");
+        userInfoNode.setAttribute('class', 'blogBody');
+        // profile picture
+        const avatar = document.createElement("img");
+        avatar.setAttribute('class', 'icon');
+        avatar.src = this.cloneString(this.user.photoURL);
+        userInfoNode.appendChild(avatar);
+        // name
+        const nameNode = this.createNode(this.cloneString(this.user.displayName), "h3");
+        nameNode.setAttribute('id', 'displayName_id')
+        userInfoNode.appendChild(nameNode)
+        return userInfoNode;
+    }
+
+    renderBodyNode (entry) {
+        const bodyNode = document.createElement("div");
+        bodyNode.setAttribute('class', 'blogBody');
+        // article title
+        const titleNode = this.createNode(entry.title, "h2");
+        bodyNode.appendChild(titleNode);
+        // article body
+        const descNode = this.createNode(entry.desc, "p");
+        descNode.innerHTML = descNode.innerHTML.replace(/(?:\r\n|\r|\n)/g, '<br>');
+        console.log(descNode.innerHTML);
+        bodyNode.appendChild(descNode);
+        return bodyNode;
+    }
+
+    cloneString(str) {
+        return (' ' + str).slice(1);
     }
 
     createNode(content, element) {
@@ -114,19 +159,13 @@ class App {
     }
 
     renderSignIn () {
+        
         this.signInButton.addEventListener('click', this.signIn);
     }
 
     renderSignOut () {
+        
         this.signOutButton.addEventListener('click', this.signOut);
-    }
-
-    renderForm () {
-        const form = document.querySelector('form')
-        form.addEventListener('submit', (ev) => {
-            ev.preventDefault()
-            this.handleSubmit(ev);
-        })
     }
 
     renderItems() {
