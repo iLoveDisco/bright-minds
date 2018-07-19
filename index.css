@@ -349,8 +349,7 @@ main {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    min-width: 80vw;
-    max-width: 85vw;
+    width: 60vw;
     border-radius: 2vw 0vw 2vw 0vw;
 }
 

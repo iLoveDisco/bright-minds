@@ -6,23 +6,24 @@ class App {
         this.blogList = document.querySelector("#blogList_id");
         this.titleTextBox = document.querySelector("#titleTextBox_id");
         this.descTextBox = document.querySelector("#descTextBox_id");
-        this.entries = [];
+        this.entries = {};
         this.admins = ["erictu32@gmail.com"];
         this.user = 'default';
         this.initializeFireBase();
         this.handleUserChange();
+        this.loadEntries();
         this.renderItems();
-        this.syncEntries();
-    }
-
-    syncEntries() {
-        const database = firebase.database();
     }
 
     initializeFireBase () {
         // Initialize Firebase
         const config = {
-            
+            apiKey: "AIzaSyAKnCSvOCaVHHuD2fErdBYWNchTwgiumzg",
+            authDomain: "bright-minds-da4fe.firebaseapp.com",
+            databaseURL: "https://bright-minds-da4fe.firebaseio.com",
+            projectId: "bright-minds-da4fe",
+            storageBucket: "bright-minds-da4fe.appspot.com",
+            messagingSenderId: "297217562922"
         };
         firebase.initializeApp(config);
     }
@@ -94,26 +95,46 @@ class App {
         })
     }
 
-    handleSubmit (ev) {
+    handleSubmit (ev) { // current user is visible
         ev.preventDefault();
         const entry = {
             title: this.titleTextBox.value,
             desc: this.descTextBox.value,
+            author: this.user.displayName,
+            avatar: this.user.photoURL,
+            date: this.formatDate(new Date()),
         }
-        this.addEntry(entry)
+        this.addEntry(entry);
+    }
+
+    formatDate (today) {
+        const dd = today.getDate();
+        const mm = today.getMonth() + 1;
+        const yyyy = today.getFullYear();
+        return mm + '/' + dd + '/' + yyyy;
+    }
+
+    loadEntries() {
+        const ref = firebase.database().ref();
+        ref.on("value", snapshot => {
+            const database = snapshot.val()['entries'];
+            console.log(database);
+            Object.keys(database).map(key => this.blogList.appendChild(this.renderEntry(database[key])));
+         })
     }
 
     addEntry(entry) {
-        this.entries.push(entry);
-        const item = this.renderEntry(entry);
-        this.blogList.appendChild(item);
+        const database = firebase.database();
+        const currentDate = new Date();
+        database.ref('entries/' + currentDate.toString()).set(entry);
+        location.reload();
     }
 
     renderEntry(entry) {
         const item = document.createElement("div");
         item.setAttribute('class', 'blogPanel');
 
-        const userInfoNode = this.renderUserInfoNode();
+        const userInfoNode = this.renderUserInfoNode(entry);
         item.appendChild(userInfoNode);
 
         const bodyNode = this.renderBodyNode(entry);
@@ -122,19 +143,22 @@ class App {
         return item;
     }
 
-    renderUserInfoNode () {
-        
+    renderUserInfoNode (entry) {
         const userInfoNode = document.createElement("div");
         userInfoNode.setAttribute('class', 'blogBody');
         // profile picture
         const avatar = document.createElement("img");
         avatar.setAttribute('class', 'icon');
-        avatar.src = this.cloneString(this.user.photoURL);
+        avatar.src = entry.avatar;
         userInfoNode.appendChild(avatar);
         // name
-        const nameNode = this.createNode(this.cloneString(this.user.displayName), "h3");
+        const nameNode = this.createNode(entry.author, "h3");
         nameNode.setAttribute('id', 'displayName_id')
-        userInfoNode.appendChild(nameNode)
+        userInfoNode.appendChild(nameNode);
+        // date
+        const dateNode = this.createNode(entry.date, 'li');
+        userInfoNode.appendChild(dateNode);
+
         return userInfoNode;
     }
 
@@ -147,13 +171,8 @@ class App {
         // article body
         const descNode = this.createNode(entry.desc, "p");
         descNode.innerHTML = descNode.innerHTML.replace(/(?:\r\n|\r|\n)/g, '<br>');
-        console.log(descNode.innerHTML);
         bodyNode.appendChild(descNode);
         return bodyNode;
-    }
-
-    cloneString(str) {
-        return (' ' + str).slice(1);
     }
 
     createNode(content, element) {
@@ -173,12 +192,10 @@ class App {
 
     signOut () {
         firebase.auth().signOut();
-        
         location.reload();
     }
 
     renderSignIn () {
-        
         this.signInButton.addEventListener('click', this.signIn);
     }
 
