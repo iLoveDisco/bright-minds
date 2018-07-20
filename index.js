@@ -10,34 +10,33 @@ class App {
         this.admins = ["erictu32@gmail.com"];
         this.user = 'default';
         this.initializeFireBase();
-        this.handleUserChange();
-        this.loadEntries();
         this.renderItems();
+        this.loadEntries();
     }
 
     initializeFireBase () {
         // Initialize Firebase
         const config = {
-            apiKey: "AIzaSyAKnCSvOCaVHHuD2fErdBYWNchTwgiumzg",
-            authDomain: "bright-minds-da4fe.firebaseapp.com",
-            databaseURL: "https://bright-minds-da4fe.firebaseio.com",
-            projectId: "bright-minds-da4fe",
-            storageBucket: "bright-minds-da4fe.appspot.com",
-            messagingSenderId: "297217562922"
+            
         };
         firebase.initializeApp(config);
     }
 
-    scrollIntoView (el_id) {
-        const element = document.querySelector(`#${el_id}`)
-        element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+    loadEntries() {
+        const ref = firebase.database().ref();
+        ref.on("value", snapshot => {
+            const database = snapshot.val()['entries'];
+            console.log(database);
+            Object.keys(database).map(key => this.blogList.appendChild(this.renderEntry(database[key])));
+         })
     }
 
-    renderDropDown () {
-        $('.learnMore').click(function (event) {
-            event.preventDefault();
-            $(this).next('.learnMore_drop').toggleClass('in');
-        })    
+    renderItems() {
+        this.renderNavButtons();
+        this.renderDropDown();
+        this.renderForm();
+        this.renderSignIn();
+        this.renderSignOut();
     }
 
     renderNavButtons() {
@@ -49,32 +48,16 @@ class App {
         }
     }
 
-    handleUserChange () {
-        firebase.auth().onAuthStateChanged((user) => {
-            if (user) {
-                this.email = user.email;
-                this.user = user;
-                
-                this.avatarPic.src = user.photoURL;
-
-                // show sign out (avatar)
-                this.signInButton.style.display = "none";
-                this.signOutButton.style.display = "block";
-                
-            } else {
-                // show sign in
-                this.signOutButton.style.display = "none";
-                this.signInButton.style.display = "block";
-            }
-        });
+    scrollIntoView (el_id) {
+        const element = document.querySelector(`#${el_id}`)
+        element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
     }
-
-    renderItems() {
-        this.renderForm();
-        this.renderNavButtons ();
-        this.renderDropDown();
-        this.renderSignIn();
-        this.renderSignOut();
+    
+    renderDropDown () {
+        $('.learnMore').click(function (event) {
+            event.preventDefault();
+            $(this).next('.learnMore_drop').toggleClass('in');
+        })    
     }
 
     renderForm () {
@@ -112,15 +95,6 @@ class App {
         const mm = today.getMonth() + 1;
         const yyyy = today.getFullYear();
         return mm + '/' + dd + '/' + yyyy;
-    }
-
-    loadEntries() {
-        const ref = firebase.database().ref();
-        ref.on("value", snapshot => {
-            const database = snapshot.val()['entries'];
-            console.log(database);
-            Object.keys(database).map(key => this.blogList.appendChild(this.renderEntry(database[key])));
-         })
     }
 
     addEntry(entry) {
@@ -170,7 +144,7 @@ class App {
         bodyNode.appendChild(titleNode);
         // article body
         const descNode = this.createNode(entry.desc, "p");
-        descNode.innerHTML = descNode.innerHTML.replace(/(?:\r\n|\r|\n)/g, '<br>');
+        descNode.innerHTML = descNode.innerHTML.replace(/(?:\r\n|\r|\n)/g, '<br>');// replaces all returns with <br>
         bodyNode.appendChild(descNode);
         return bodyNode;
     }
@@ -195,13 +169,24 @@ class App {
         location.reload();
     }
 
-    renderSignIn () {
-        this.signInButton.addEventListener('click', this.signIn);
+    renderSignOut () {
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                this.email = user.email;
+                this.user = user;
+                this.avatarPic.src = user.photoURL;
+                // show sign out (avatar)
+                this.signInButton.style.display = "none";
+                this.signOutButton.style.display = "block";
+            }
+        });
+        this.signOutButton.addEventListener('click', this.signOut);
     }
 
-    renderSignOut () {
-        
-        this.signOutButton.addEventListener('click', this.signOut);
+    renderSignIn () {
+        this.signOutButton.style.display = "none";
+        this.signInButton.style.display = "block";
+        this.signInButton.addEventListener('click', this.signIn);
     }
 }
 
