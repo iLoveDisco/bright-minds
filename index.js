@@ -26,8 +26,9 @@ class App {
         const ref = firebase.database().ref();
         ref.on("value", snapshot => {
             const database = snapshot.val()['entries'];
-            console.log(database);
-            Object.keys(database).map(key => this.blogList.appendChild(this.renderEntry(database[key])));
+            Object.keys(database).sort((a,b) => {
+                return parseInt(a) - parseInt(b);
+            }).map(key => this.blogList.appendChild(this.renderEntry(database[key])));
          })
     }
 
@@ -81,10 +82,10 @@ class App {
     handleSubmit (ev) { // current user is visible
         ev.preventDefault();
         const entry = {
-            title: this.titleTextBox.value,
-            desc: this.descTextBox.value,
-            author: this.user.displayName,
-            avatar: this.user.photoURL,
+            articleTitle: this.titleTextBox.value,
+            body: this.descTextBox.value,
+            displayName: this.user.displayName,
+            icon: this.user.photoURL,
             date: this.formatDate(new Date()),
         }
         this.addEntry(entry);
@@ -100,61 +101,31 @@ class App {
     addEntry(entry) {
         const database = firebase.database();
         const currentDate = new Date();
-        database.ref('entries/' + currentDate.toString()).set(entry);
+        database.ref('entries/' + this.formatKey(currentDate)).set(entry);
         location.reload();
     }
 
+    formatKey (today) {
+        const dd = today.getDate() + "";
+        const mm = today.getMonth() + 1 + "";
+        const yyyy = today.getFullYear() + "";
+        const time = today.getHours() + "" + today.getMinutes() + today.getSeconds();
+        return yyyy + mm + dd + time;
+    }
+
     renderEntry(entry) {
-        const item = document.createElement("div");
-        item.setAttribute('class', 'blogPanel');
-
-        const userInfoNode = this.renderUserInfoNode(entry);
-        item.appendChild(userInfoNode);
-
-        const bodyNode = this.renderBodyNode(entry);
-        item.appendChild(bodyNode);
-
+        const item = document.querySelector("#blog_entry_id").cloneNode(true);
+        const properties = Object.keys(entry);
+        properties.forEach(property => {
+            console.log(property)
+            const el = item.querySelector(`.${property}`) // get the children inside item.
+            if (el) { // if el != null
+              el.textContent = entry[property];
+              el.setAttribute('title', entry[property]);
+            }
+          })
         return item;
     }
-
-    renderUserInfoNode (entry) {
-        const userInfoNode = document.createElement("div");
-        userInfoNode.setAttribute('class', 'blogBody');
-        // profile picture
-        const avatar = document.createElement("img");
-        avatar.setAttribute('class', 'icon');
-        avatar.src = entry.avatar;
-        userInfoNode.appendChild(avatar);
-        // name
-        const nameNode = this.createNode(entry.author, "h3");
-        nameNode.setAttribute('id', 'displayName_id')
-        userInfoNode.appendChild(nameNode);
-        // date
-        const dateNode = this.createNode(entry.date, 'li');
-        userInfoNode.appendChild(dateNode);
-
-        return userInfoNode;
-    }
-
-    renderBodyNode (entry) {
-        const bodyNode = document.createElement("div");
-        bodyNode.setAttribute('class', 'blogBody');
-        // article title
-        const titleNode = this.createNode(entry.title, "h2");
-        bodyNode.appendChild(titleNode);
-        // article body
-        const descNode = this.createNode(entry.desc, "p");
-        descNode.innerHTML = descNode.innerHTML.replace(/(?:\r\n|\r|\n)/g, '<br>');// replaces all returns with <br>
-        bodyNode.appendChild(descNode);
-        return bodyNode;
-    }
-
-    createNode(content, element) {
-        const node = document.createElement(element);
-        const contentNode = document.createTextNode(content);
-        node.appendChild(contentNode);
-        return node;
-    } 
 
     signIn () {
         const googleProvider = new firebase.auth.GoogleAuthProvider();

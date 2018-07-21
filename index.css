@@ -143,7 +143,7 @@ body {
 .quote {
     margin: 0vw;
     padding: 0 0 0 4vw;
-    background: url(quote.png) no-repeat 0 3px;
+    background: url(images/quote.png) no-repeat 0 3px;
     background-size: 6%;
     font-style: italic;
     font-size: 1.2vw;
@@ -228,7 +228,6 @@ p {
     line-height: 1.9;
     max-width: 65vw;
     word-wrap: break-word;
-    
 }
 
 main {
@@ -340,8 +339,30 @@ main {
     border: 1px solid white;
 }
 
-#displayName_id {
+.displayName {
     text-align: center;
+    font-size: 2.2vw;
+    padding: 0vw;
+    margin: 0vw;
+}
+
+.date {
+    text-align: center;
+    font-size: 1.5vw;
+    padding: .5vw;
+    margin: 0vw;
+}
+
+.line {
+    margin-left: 4vw;
+}
+
+.body {
+    font-size: 1.15vw;
+    padding: .25vw;
+    line-height: 1.9;
+    max-width: 65vw;
+    word-wrap: break-word;
 }
 
 #blogList_id {
@@ -353,7 +374,7 @@ main {
     border-radius: 2vw 0vw 2vw 0vw;
 }
 
-.blogPanel {
+.blog-row {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -361,7 +382,7 @@ main {
     align-items: center;
 }
 
-.blogBody {
+.blog-column {
     display: flex;
     flex-direction: column;
     align-self: flex-start;

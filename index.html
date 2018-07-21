@@ -12,7 +12,7 @@
 
 <body class = "contact">
     <div class="navbar">
-        <img id="logo_id" src="logo.png">
+        <img id="logo_id" src="images/logo.png">
         <div id="navs_id">  
             <a class="nav home" href="#welcome">Home</a>
             <a class="nav programs" href="#programs">Programs</a>
@@ -25,7 +25,7 @@
     <main id="home_id" class= "home">
         <h1></h1>
         <div class= "homeSection">   
-            <img src="tree.png" alt="" style="max-width:35vw;">
+            <img src="images/tree.png" alt="" style="max-width:35vw;">
             <ul class = "home bubble">
                 <h2>Excellence Beyond the Classroom</h2>
             <div class="list">
@@ -43,7 +43,7 @@
                 </p>
             </div>
             <div class="slideshow">
-                <img class="slides" src="slide1.png">
+                <img class="slides" src="images/slide1.png">
             </div>
         </div>
     </main>
@@ -53,7 +53,7 @@
         </div>
         <div class="section-row">
             <div class="slideshow">
-                <img class="slides" src="actLogo.jpg" alt="">
+                <img class="slides" src="images/actLogo.jpg" alt="">
             </div>
             <div class="programs bubble">
                 <h2><i class="fas fa-pen-square"></i>ACT/SAT Summer Enrichment</h2>
@@ -95,13 +95,13 @@
                 </p>
             </div>
             <div class="slideshow">
-                <img src="mathTree.png" alt="" style="max-width:33vw;margin-left: 0vw;padding:0vw;">
+                <img src="images/mathTree.png" alt="" style="max-width:33vw;margin-left: 0vw;padding:0vw;">
             </div>
         </div>
 
         <div class="section-row">
             <div class="slideshow">
-                <img class="slides" src="readingTree.png" alt="">
+                <img class="slides" src="images/readingTree.png" alt="">
             </div>
             <div class="programs bubble">
                 <h2><i class="fas fa-book-open"></i>Reading</h2>
@@ -131,7 +131,7 @@
                 </p>
             </div>
             <div class="slideshow">
-                <img class="slides" src="children-drawing.jpg" alt="">
+                <img class="slides" src="images/children-drawing.jpg" alt="">
             </div>
         </div>
     </main>
@@ -141,7 +141,7 @@
             <h1 class = "parents">Parents</h1>
         </div>
         <div class="section-row">
-            <img class="slides"src="parent.jpg" alt="">
+            <img class="slides"src="images/parent.jpg" alt="">
             <div class="parents bubble">
                 <h2><i class="fas fa-user"></i>We Need <u>Your</u> Help!</h2>
                 <p>
@@ -159,10 +159,10 @@
                     <li>Praise their children for their daily efforts</li>
                 </ul>
             </div>
-            <img class = "slides" src="writing.jpg" alt="">
+            <img class = "slides" src="images/writing.jpg" alt="">
         </div>
         <div class="section-row">
-            <img class = "slides" src="art-bg.jpg" alt="">
+            <img class = "slides" src="images/art-bg.jpg" alt="">
             <div class="parents bubble">
                 <h2>Resources</h2>
                 <ul class="parents">
@@ -188,9 +188,9 @@
                 <h3><i class="fas fa-phone"></i>1-330-966-7226</h3>
                 <h3><i class="fas fa-map-marker-alt"></i>4900 Frank Rd. NW, <br>North Canton, OH 44720</h3>
                 <h3><i class="far fa-envelope"></i>brightmind111@gmail.com</h3>
-                <img src="building.png" alt="" class="slides">
+                <img src="images/building.png" alt="" class="slides">
             </ul>
-            <img src="map.png" alt="">
+            <img src="images/map.png" alt="">
         </div>
     </main>
 
@@ -206,12 +206,22 @@
         </form>
         <div class="section-row">
             <button id="signOut_id" class="home" style="display: none">
-                <img src="" style="max-width: 5vw" alt="" id= "avatar_id">
+                <img src="images/" style="max-width: 5vw" alt="" id= "avatar_id">
             </button>
             <button id="signIn_id" class= "home" style="display: block" title="Sign in with Google"><i class="fab fa-google"></i>Sign In</button>
         </div>
         <div id="blogList_id" class= "home">
-            <div class="blogPanel"></div>
+            <div id= "blog_entry_id" class="blog-row" display="none">
+                <div name="userInfo" class="blog-column">
+                    <img name="avatar" class="icon" src="" alt="">
+                    <div name="displayName" class="displayName"></div>
+                    <div name="date" class="date"></div>
+                </div>
+                <div name="articleInfo" class="blog-column">
+                    <h2 name="title" id="entryTitle_id" class="articleTitle"></h2>
+                    <div name="body" class="body"></div>
+                </div>
+            </div>
         </div>
     </main>
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
