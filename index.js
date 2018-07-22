@@ -85,7 +85,6 @@ class App {
             articleTitle: this.titleTextBox.value,
             body: this.descTextBox.value,
             displayName: this.user.displayName,
-            icon: this.user.photoURL,
             date: this.formatDate(new Date()),
         }
         this.addEntry(entry);
@@ -93,9 +92,10 @@ class App {
 
     formatDate (today) {
         const dd = today.getDate();
-        const mm = today.getMonth() + 1;
+        const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        const mm = months[today.getMonth()];
         const yyyy = today.getFullYear();
-        return mm + '/' + dd + '/' + yyyy;
+        return `${mm} ${dd}, ${yyyy}`;
     }
 
     addEntry(entry) {
@@ -106,20 +106,16 @@ class App {
     }
 
     formatKey (today) {
-        const dd = today.getDate() + "";
-        const mm = today.getMonth() + 1 + "";
-        const yyyy = today.getFullYear() + "";
-        const time = today.getHours() + "" + today.getMinutes() + today.getSeconds();
-        return yyyy + mm + dd + time;
+        return today.getTime();
     }
 
     renderEntry(entry) {
         const item = document.querySelector("#blog_entry_id").cloneNode(true);
         const properties = Object.keys(entry);
         properties.forEach(property => {
-            console.log(property)
             const el = item.querySelector(`.${property}`) // get the children inside item.
             if (el) { // if el != null
+              if (property === "icon") el.src = entry[property];
               el.textContent = entry[property];
               el.setAttribute('title', entry[property]);
             }

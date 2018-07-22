@@ -19,6 +19,10 @@
             <a class="nav parents" href="#parents">Parents</a>
             <a class="nav contact" href="#contactus">Contact Us</a>
             <a class="nav blogColor" href="#blog">Blog</a>
+            <a id="signOut_id" style="display: none">
+                <img src="" style="max-height: 4.8vw;"alt="" id= "avatar_id">
+            </a>
+            <a id="signIn_id" class= "home" style="display: block" title="Sign in with Google"><i class="fab fa-google"></i>Sign In</a>
         </div>
     </div>
 
@@ -200,27 +204,17 @@
         </div>
         <form id= "form_id" class="section-column" autocomplete="off">
             <h2>Add Blog Entry</h2>
-            <input type="text" id= "titleTextBox_id" class="articleTitle" placeholder="Enter the Title">
-            <textarea rows="10" cols="50" class="textBox" id="descTextBox_id"placeholder="Enter a description"></textarea>
+            <input type="text" id= "titleTextBox_id" class="articleTitleEntry" placeholder="Title" required>
+            <input type="text" id= "nameTextBox_id" class="nameEntry" placeholder="Name" required>
+            <textarea rows="10" cols="50" class="textBox" id="descTextBox_id"placeholder="Body"></textarea>
             <button id = "send_id" type="submit"> <i class="far fa-paper-plane"></i> </button>
         </form>
-        <div class="section-row">
-            <button id="signOut_id" class="home" style="display: none">
-                <img src="images/" style="max-width: 5vw" alt="" id= "avatar_id">
-            </button>
-            <button id="signIn_id" class= "home" style="display: block" title="Sign in with Google"><i class="fab fa-google"></i>Sign In</button>
-        </div>
         <div id="blogList_id" class= "home">
-            <div id= "blog_entry_id" class="blog-row" display="none">
-                <div name="userInfo" class="blog-column">
-                    <img name="avatar" class="icon" src="" alt="">
-                    <div name="displayName" class="displayName"></div>
-                    <div name="date" class="date"></div>
-                </div>
-                <div name="articleInfo" class="blog-column">
-                    <h2 name="title" id="entryTitle_id" class="articleTitle"></h2>
-                    <div name="body" class="body"></div>
-                </div>
+            <div id= "blog_entry_id" class="blog-column" display="none">
+                <div class="articleTitle"></div>
+                <div class="date"></div>
+                <div class="displayName"></div>
+                <div name="body" class="body"></div>
             </div>
         </div>
     </main>

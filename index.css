@@ -38,7 +38,6 @@ body {
     align-items: center;
     z-index: 10;
     opacity: .99;
-    margin-right: 6vw;
 }
 
 #logo_id {
@@ -55,6 +54,20 @@ body {
     font-size: 1.6vw;
     transition: color .5s; -webkit-transition: color .5s;
     transition: background-color .5s; -webkit-transition: background-color .5s;
+}
+
+#signIn_id {
+    font-size: 1.6vw;
+    color: purple;
+    background-color: lightpink;
+    padding-right: 2vw;
+    padding-top: 1.4vw;
+    padding-bottom: 1.4vw;
+}
+
+#signOut_id {
+    font-size: 1.6vw;
+    padding-right: 4vw;
 }
   
 .nav:hover {
@@ -286,26 +299,35 @@ main {
 
 #form_id {
     background-color: lightpink;
-    padding-left: 13vw;
-    padding-right: 13vw;
+    padding-left: 3vw;
+    padding-right: 3vw;
     padding-top: 2vw;
     padding-bottom: 2vw;
     border-radius: .5vw;
-    
 }
 
-.articleTitle {
-    width: 80vw;
+.articleTitleEntry {
+    width: 60vw;
     height: 4vw;
-    font-size: 3vw;
+    font-size: 2vw;
     padding: 1vw;
-    margin: 1vw;
-    
+    margin: .3vw;
+    font-family: 'Lucida Sans';
+}
+
+.nameEntry {
+    width: 60vw;
+    height: 4vw;
+    font-size: 2vw;
+    padding: 1vw;
+    margin: .3vw;
+    font-family: 'Lucida Sans';
 }
 
 .textBox {
-    width: 80vw;
-    font-size: 1.5vw;
+    width: 60vw;
+    font-size: 1.15vw;
+    font-family: 'Lucida Sans';
     padding: 1vw;
     border-radius: 0vw 0vw 1vw 1vw;
 }
@@ -317,51 +339,30 @@ main {
     margin: 1vw;
     border-radius: .5vw;
     border: 1px solid white;
-    width: 70vw;
+    width: 60vw;
 }
 
-#signIn_id {
-    font-size: 1.5vw;
-    color: purple;
-    background-color: lightpink;
-    padding-right: 2vw;
-    padding-top: 1.5vw;
-    padding-bottom: 1.5vw;
-    margin: 1vw;
-    border-radius: .5vw;
-    border: 1px solid white;
+.articleTitle {
+    font-size: 3vw;
+    padding-bottom: 1vw;
 }
 
-#signOut_id {
-    font-size: 1.5vw;
-    padding: 1vw;
-    border-radius: .5vw;
-    border: 1px solid white;
+.date {
+    font-size: 1vw;
+    padding-bottom: .5vw;
 }
 
 .displayName {
     text-align: center;
-    font-size: 2.2vw;
-    padding: 0vw;
-    margin: 0vw;
-}
-
-.date {
-    text-align: center;
-    font-size: 1.5vw;
-    padding: .5vw;
-    margin: 0vw;
-}
-
-.line {
-    margin-left: 4vw;
+    font-size: 1.2vw;
+    padding-bottom: 1vw;
 }
 
 .body {
     font-size: 1.15vw;
-    padding: .25vw;
-    line-height: 1.9;
-    max-width: 65vw;
+    line-height: 2vw;
+    word-spacing: .2vw;
+    max-width: 47vw;
     word-wrap: break-word;
 }
 
@@ -371,21 +372,22 @@ main {
     align-items: flex-start;
     justify-content: center;
     width: 60vw;
-    border-radius: 2vw 0vw 2vw 0vw;
+    border-radius: .5vw;
+    background-color: rgb(249, 248, 255);
+    color: #4600B8;
+    max-height: 80vw;
+    overflow-y: scroll;
 }
 
-.blog-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    padding: 2vw;
-    align-items: center;
+#blog_entry_id {
+    margin-left: 5vw;
+    margin-bottom: 2.5vw;
 }
 
 .blog-column {
     display: flex;
     flex-direction: column;
-    align-self: flex-start;
+    align-items: flex-start;
     justify-content: flex-start;
     padding: 1vw;
 }
