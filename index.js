@@ -22,12 +22,20 @@ class App {
         firebase.initializeApp(config);
     }
 
+    checkUser () {
+        
+    }
+
     loadEntries() {
+        const space = document.createElement("div");
+        space.style.paddingBottom = "0vw";
+        this.blogList.appendChild(space);
+
         const ref = firebase.database().ref();
         ref.on("value", snapshot => {
             const database = snapshot.val()['entries'];
             Object.keys(database).sort((a,b) => {
-                return parseInt(a) - parseInt(b);
+                return parseInt(b) - parseInt(a); // Sort by most recent
             }).map(key => this.blogList.appendChild(this.renderEntry(database[key])));
          })
     }
@@ -101,12 +109,8 @@ class App {
     addEntry(entry) {
         const database = firebase.database();
         const currentDate = new Date();
-        database.ref('entries/' + this.formatKey(currentDate)).set(entry);
+        database.ref('entries/' + currentDate.getTime()).set(entry);
         location.reload();
-    }
-
-    formatKey (today) {
-        return today.getTime();
     }
 
     renderEntry(entry) {
@@ -116,11 +120,20 @@ class App {
             const el = item.querySelector(`.${property}`) // get the children inside item.
             if (el) { // if el != null
               if (property === "icon") el.src = entry[property];
+              if (property === "body") {
+                el.innerHTML = this.formatBody(entry.body);
+                return;
+              }
               el.textContent = entry[property];
               el.setAttribute('title', entry[property]);
             }
           })
+        item.style.display = "block";
         return item;
+    }
+
+    formatBody(text) {
+        return text.replace(/(?:\r\n|\r|\n)/g, '<br>');// replaces all returns with <br>
     }
 
     signIn () {

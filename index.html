@@ -202,7 +202,7 @@
         <div class="section-row">
             <h1 class="blogColor">Blog</h1>
         </div>
-        <form id= "form_id" class="section-column" autocomplete="off">
+        <form id= "form_id" class="section-column admin-only" autocomplete="off">
             <h2>Add Blog Entry</h2>
             <input type="text" id= "titleTextBox_id" class="articleTitleEntry" placeholder="Title" required>
             <input type="text" id= "nameTextBox_id" class="nameEntry" placeholder="Name" required>
@@ -210,7 +210,8 @@
             <button id = "send_id" type="submit"> <i class="far fa-paper-plane"></i> </button>
         </form>
         <div id="blogList_id" class= "home">
-            <div id= "blog_entry_id" class="blog-column" display="none">
+            <div id= "blog_entry_id">
+                <button class="delete admin-only"><i class="far fa-trash-alt"></i></button>
                 <div class="articleTitle"></div>
                 <div class="date"></div>
                 <div class="displayName"></div>

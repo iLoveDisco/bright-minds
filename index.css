@@ -342,46 +342,48 @@ main {
     width: 60vw;
 }
 
+#blogList_id {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 60vw;
+    border-radius: .5vw;
+    background-color: rgb(249, 248, 255);
+    color: #4600B8;
+    max-height: 60vw;
+    overflow-y: scroll; 
+}
+
 .articleTitle {
-    font-size: 3vw;
-    padding-bottom: 1vw;
+    font-size: 2.5vw;
+    margin-bottom: 2vw;
+    
 }
 
 .date {
-    font-size: 1vw;
-    padding-bottom: .5vw;
+    font-size: 1.2vw;
+    padding-bottom: 1vw;
 }
 
 .displayName {
-    text-align: center;
     font-size: 1.2vw;
-    padding-bottom: 1vw;
+    padding-bottom: 2vw;
 }
 
 .body {
     font-size: 1.15vw;
     line-height: 2vw;
     word-spacing: .2vw;
-    max-width: 47vw;
-    word-wrap: break-word;
-}
-
-#blogList_id {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    width: 60vw;
-    border-radius: .5vw;
-    background-color: rgb(249, 248, 255);
-    color: #4600B8;
-    max-height: 80vw;
-    overflow-y: scroll;
+    overflow-wrap: break-word;
+    display: table-row;
 }
 
 #blog_entry_id {
     margin-left: 5vw;
-    margin-bottom: 2.5vw;
+    margin-top: 4vw;
+    max-width: 50vw;
+    display: none;
 }
 
 .blog-column {
@@ -390,4 +392,12 @@ main {
     align-items: flex-start;
     justify-content: flex-start;
     padding: 1vw;
+}
+
+.admin-only {
+    display: none;
+}
+
+.delete {
+
 }
