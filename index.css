@@ -352,22 +352,23 @@ main {
     background-color: rgb(249, 248, 255);
     color: #4600B8;
     max-height: 60vw;
-    overflow-y: scroll; 
+    overflow-y: scroll;
+    margin-bottom: 5vw;
 }
 
 .articleTitle {
     font-size: 2.5vw;
     margin-bottom: 2vw;
-    
 }
 
 .date {
-    font-size: 1.2vw;
-    padding-bottom: 1vw;
+    font-size: 1.3vw;
+    padding-bottom: 2vw;
+    text-align: center;
 }
 
 .displayName {
-    font-size: 1.2vw;
+    font-size: 1.5vw;
     padding-bottom: 2vw;
 }
 
@@ -382,6 +383,7 @@ main {
 #blog_entry_id {
     margin-left: 5vw;
     margin-top: 4vw;
+    margin-bottom: 2vw;
     max-width: 50vw;
     display: none;
 }
@@ -399,5 +401,5 @@ main {
 }
 
 .delete {
-
+    background-color: pink;
 }

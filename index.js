@@ -4,12 +4,10 @@ class App {
         this.signOutButton = document.querySelector("#signOut_id");
         this.avatarPic = document.querySelector("#avatar_id");
         this.blogList = document.querySelector("#blogList_id");
-        this.titleTextBox = document.querySelector("#titleTextBox_id");
-        this.descTextBox = document.querySelector("#descTextBox_id");
-        this.entries = {};
-        this.admins = ["erictu32@gmail.com"];
         this.user = 'default';
+        this.admins = ["erictu32@gmail.com"]
         this.initializeFireBase();
+        this.checkUser();
         this.renderItems();
         this.loadEntries();
     }
@@ -23,7 +21,27 @@ class App {
     }
 
     checkUser () {
-        
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                this.email = user.email;
+                this.user = user;
+                this.avatarPic.src = user.photoURL;
+                // show sign out (avatar)
+                this.signInButton.style.display = "none";
+                this.signOutButton.style.display = "block";
+                // if right user, show admin-only tools
+                if (this.admins.includes(user.email)) {
+                    const elements = document.getElementsByClassName("admin-only");
+                    for(let i = 0; i < elements.length; i++) {
+                        elements[i].style.display = "block";
+                    }
+                }
+            } else {
+                // show sign in button
+                this.signInButton.style.display = "block";
+                this.signOutButton.style.display = "none";
+            }
+        });
     }
 
     loadEntries() {
@@ -71,29 +89,26 @@ class App {
 
     renderForm () {
         const form = document.querySelector('#form_id');
-        firebase.auth().onAuthStateChanged((user) => {
-            if (user) {
-                if(this.admins.includes(this.user.email)) {
-                    form.style.display = "visible";
-                }
-            } else {
-                form.style.display = "none";
-            }
-        });
-        
         form.addEventListener('submit', (ev) => {
             ev.preventDefault()
             this.handleSubmit(ev);
-        })
+        });
+        const adminList = document.createElement("h3");
+        adminList.appendChild(document.createTextNode(`Current administrators: ${this.admins}`))
+        form.appendChild(adminList)
     }
 
     handleSubmit (ev) { // current user is visible
         ev.preventDefault();
+        const titleTextBox = document.querySelector("#titleTextBox_id");
+        const nameTextBox = document.querySelector('#nameTextBox_id')
+        const descTextBox = document.querySelector("#descTextBox_id");
         const entry = {
-            articleTitle: this.titleTextBox.value,
-            body: this.descTextBox.value,
-            displayName: this.user.displayName,
+            articleTitle: titleTextBox.value,
+            body: descTextBox.value,
+            displayName: nameTextBox.value,
             date: this.formatDate(new Date()),
+            id: ""
         }
         this.addEntry(entry);
     }
@@ -103,13 +118,20 @@ class App {
         const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
         const mm = months[today.getMonth()];
         const yyyy = today.getFullYear();
-        return `${mm} ${dd}, ${yyyy}`;
+        return `~ ${mm} ${dd}, ${yyyy} ~`;
     }
 
     addEntry(entry) {
         const database = firebase.database();
-        const currentDate = new Date();
-        database.ref('entries/' + currentDate.getTime()).set(entry);
+        const currentTime = new Date().getTime();
+        entry['id'] = currentTime;
+        database.ref('entries/' + currentTime).set(entry);
+        location.reload();
+    }
+
+    deleteEntry(entryID, ev) {
+        const database = firebase.database();
+        database.ref('entries/' + entryID).remove();
         location.reload();
     }
 
@@ -119,13 +141,19 @@ class App {
         properties.forEach(property => {
             const el = item.querySelector(`.${property}`) // get the children inside item.
             if (el) { // if el != null
-              if (property === "icon") el.src = entry[property];
-              if (property === "body") {
-                el.innerHTML = this.formatBody(entry.body);
-                return;
-              }
+                switch (property) {
+                    case "icon":
+                        el.src = entry[property];
+                        break;
+                    case "body": 
+                        el.innerHTML = this.formatBody(entry.body);
+                        return;
+                    case "id":
+                        el.addEventListener('click', this.deleteEntry.bind(this, entry.id))
+                        return;
+                }
+              // else
               el.textContent = entry[property];
-              el.setAttribute('title', entry[property]);
             }
           })
         item.style.display = "block";
@@ -150,22 +178,10 @@ class App {
     }
 
     renderSignOut () {
-        firebase.auth().onAuthStateChanged((user) => {
-            if (user) {
-                this.email = user.email;
-                this.user = user;
-                this.avatarPic.src = user.photoURL;
-                // show sign out (avatar)
-                this.signInButton.style.display = "none";
-                this.signOutButton.style.display = "block";
-            }
-        });
         this.signOutButton.addEventListener('click', this.signOut);
     }
 
     renderSignIn () {
-        this.signOutButton.style.display = "none";
-        this.signInButton.style.display = "block";
         this.signInButton.addEventListener('click', this.signIn);
     }
 }
