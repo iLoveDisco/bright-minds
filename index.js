@@ -11,12 +11,7 @@ class App {
     initializeFireBase () {
         // Initialize Firebase
         const config = {
-            apiKey: "AIzaSyAKnCSvOCaVHHuD2fErdBYWNchTwgiumzg",
-            authDomain: "bright-minds-da4fe.firebaseapp.com",
-            databaseURL: "https://bright-minds-da4fe.firebaseio.com",
-            projectId: "bright-minds-da4fe",
-            storageBucket: "bright-minds-da4fe.appspot.com",
-            messagingSenderId: "297217562922"
+            
         };
         firebase.initializeApp(config);
     }
