@@ -152,7 +152,7 @@ body {
 
 .bubble {
     margin: 1vw;
-    padding: 1vw;
+    padding: 2vw;
     border-radius: .8vw;
     max-width:55vw;
 }
@@ -293,29 +293,17 @@ main {
   }
 
 #mathTree_id {
-    max-width:33vw;
+    max-width:40vw;
     margin: 1vw;
     padding: 1vw;
     transition: max-width .5s; -webkit-transition: max-width .5s;
-}
-
-#mathTree_id:hover {
-    max-width: 38vw;
-    padding: 0vw;
-    margin: 0vw;
 }
 
 #readingTree_id {
-    max-width:33vw;
+    max-width:40vw;
     margin: 1vw;
     padding: 1vw;
     transition: max-width .5s; -webkit-transition: max-width .5s;
-}
-
-#readingTree_id:hover {
-    max-width: 38vw;
-    padding: 0vw;
-    margin: 0vw;
 }
 
 #form_id {
