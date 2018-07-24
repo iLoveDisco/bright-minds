@@ -18,18 +18,20 @@
             <a class="nav programs" href="#programs">Programs</a>
             <a class="nav parents" href="#parents">Parents</a>
             <a class="nav contact" href="#contactus">Contact Us</a>
-            <a class="nav blogColor" href="#blog">Blog</a>
-            <a id="signOut_id" style="display: none">
-                <img src="" style="max-height: 4.8vw;"alt="" id= "avatar_id">
+            <a class="nav blogColor" href="#blog">Newsletter</a>
+            <a id="signOut_id" class="nav" style="display: none" title="Sign Out">
+                <img src="" class="avatar" alt="" id= "avatar_id">
             </a>
-            <a id="signIn_id" class= "home" style="display: block" title="Sign in with Google"><i class="fab fa-google"></i>Sign In</a>
+            <a id="signIn_id" class= "nav signIn" style="display: block" title="Sign in with Google">
+                <i class="fab fa-google"></i>
+                <i class="fas fa-sign-in-alt" style="padding-right: 0vw"></i>
+            </a>
         </div>
     </div>
 
     <main id="home_id" class= "home">
-        <h1></h1>
         <div class= "homeSection">   
-            <img src="images/tree.png" alt="" style="max-width:35vw;">
+            <img src="images/tree.png" alt="" style="max-width:35vw; margin-top: 12vw">
             <ul class = "home bubble">
                 <h2>Excellence Beyond the Classroom</h2>
             <div class="list">
@@ -69,7 +71,7 @@
                 <div class ="learnMore">
                     <h3><i class="far fa-caret-square-down"></i>Proven Results</h3>
                 </div>
-                <p class="home learnMore_drop">
+                <p class="learnMore_drop">
                     On the September, 2016 ACT Exam, our students' scores improved from: 
                     <br> <br>
                     Jack 26 to 33 <br>
@@ -99,13 +101,13 @@
                 </p>
             </div>
             <div class="slideshow">
-                <img src="images/mathTree.png" alt="" style="max-width:33vw;margin-left: 0vw;padding:0vw;">
+                <img id="mathTree_id" src="images/mathTree.png" alt="">
             </div>
         </div>
 
         <div class="section-row">
             <div class="slideshow">
-                <img class="slides" src="images/readingTree.png" alt="">
+                <img id="readingTree_id" src="images/readingTree.png" alt="">
             </div>
             <div class="programs bubble">
                 <h2><i class="fas fa-book-open"></i>Reading</h2>
@@ -185,20 +187,23 @@
         <div class="section-row">
             <h1 class = "contact">Contact Us</h1>
         </div>
-        <div class="section-row">
-            <ul>
-                <h3><i class="fas fa-phone"></i>1-330-966-7226</h3>
-                <h3><i class="fas fa-map-marker-alt"></i>4900 Frank Rd. NW, <br>North Canton, OH 44720</h3>
-                <h3><i class="far fa-envelope"></i>brightmind111@gmail.com</h3>
-                <img src="images/building.png" alt="" class="slides">
+        <div class="section-column">
+            <ul style="margin-right: 0vw; list-style-type: none;">
+                <li><i class="fas fa-phone"></i>1-330-966-7226</li>
+                <li><i class="fas fa-map-marker-alt"></i>4900 Frank Rd. NW, <br>North Canton, OH 44720</li>
+                <li><i class="far fa-envelope"></i>brightmind111@gmail.com</li> 
             </ul>
-            <img src="images/map.png" alt="">
+            <div class="slideshow">
+                <img src="images/building.png" alt="" class="slides">
+                <img src="images/map.png" alt="" class="slides">
+            </div>
+            
         </div>
     </main>
 
     <main id="blog_id" class="blogColor">
         <div class="section-row">
-            <h1 class="blogColor">Blog</h1>
+            <h1 class="blogColor">Newsletter</h1>
         </div>
         <form id= "form_id" class="section-column admin-only" autocomplete="off">
             <p>Note: Pink colored items are not visible to the public</p>
@@ -211,7 +216,9 @@
         <div id="blogList_id" class= "home">
             <div id= "blog_entry_id">
                 <div class="date"></div>
-                <button class="delete admin-only id"><i class="far fa-trash-alt"></i></button>
+                <button class="delete admin-only id">
+                    <i class="far fa-trash-alt" style="padding-left: 1vw; padding-top: .5vw; padding-bottom: .5vw"></i>
+                </button>
                 <div class="articleTitle"></div>
                 <div class="displayName"></div>
                 <div name="body" class="body"></div>

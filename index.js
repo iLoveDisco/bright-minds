@@ -1,10 +1,6 @@
 class App {
     constructor () {
-        this.signInButton = document.querySelector("#signIn_id");
-        this.signOutButton = document.querySelector("#signOut_id");
-        this.avatarPic = document.querySelector("#avatar_id");
         this.blogList = document.querySelector("#blogList_id");
-        this.user = 'default';
         this.admins = ["erictu32@gmail.com"]
         this.initializeFireBase();
         this.checkUser();
@@ -23,14 +19,13 @@ class App {
     checkUser () {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-                this.email = user.email;
-                this.user = user;
-                this.avatarPic.src = user.photoURL;
+                document.querySelector("#avatar_id").src = user.photoURL;
                 // show sign out (avatar)
-                this.signInButton.style.display = "none";
-                this.signOutButton.style.display = "block";
-                // if right user, show admin-only tools
+                document.querySelector("#signIn_id").style.display = "none";
+                document.querySelector("#signOut_id").style.display = "block";
+                // if right user
                 if (this.admins.includes(user.email)) {
+                    // show admin-only tools
                     const elements = document.getElementsByClassName("admin-only");
                     for(let i = 0; i < elements.length; i++) {
                         elements[i].style.display = "block";
@@ -38,8 +33,8 @@ class App {
                 }
             } else {
                 // show sign in button
-                this.signInButton.style.display = "block";
-                this.signOutButton.style.display = "none";
+                document.querySelector("#signIn_id").style.display = "block";
+                document.querySelector("#signOut_id").style.display = "none";
             }
         });
     }
@@ -54,7 +49,7 @@ class App {
             const database = snapshot.val()['entries'];
             Object.keys(database).sort((a,b) => {
                 return parseInt(b) - parseInt(a); // Sort by most recent
-            }).map(key => this.blogList.appendChild(this.renderEntry(database[key])));
+            }).map(key => this.blogList.appendChild(this.renderEntry(database[key])));// Append to bloglist
          })
     }
 
@@ -178,11 +173,11 @@ class App {
     }
 
     renderSignOut () {
-        this.signOutButton.addEventListener('click', this.signOut);
+        document.querySelector("#signOut_id").addEventListener('click', this.signOut);
     }
 
     renderSignIn () {
-        this.signInButton.addEventListener('click', this.signIn);
+        document.querySelector("#signIn_id").addEventListener('click', this.signIn);
     }
 }
 

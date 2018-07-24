@@ -24,7 +24,7 @@ body {
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     z-index: 10;
     opacity: .99;
     box-shadow:0px 0px 1vw grey; 
@@ -35,7 +35,7 @@ body {
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-evenly;
-    align-items: center;
+    align-items: flex-start;
     z-index: 10;
     opacity: .99;
 }
@@ -52,27 +52,34 @@ body {
     padding: 1.4vw;
     text-decoration: none;
     font-size: 1.6vw;
-    transition: color .5s; -webkit-transition: color .5s;
-    transition: background-color .5s; -webkit-transition: background-color .5s;
+    transition: opacity .3s; -webkit-transition: opacity .3s;
+    height: 2.2vw;
+    cursor: pointer;
 }
 
 #signIn_id {
-    font-size: 1.6vw;
-    color: purple;
-    background-color: lightpink;
     padding-right: 2vw;
-    padding-top: 1.4vw;
-    padding-bottom: 1.4vw;
 }
 
 #signOut_id {
-    font-size: 1.6vw;
-    padding-right: 4vw;
+    padding: 0vw;
+    margin: 0vw;
 }
-  
+
+.avatar {
+    padding: 0vw;
+    margin: 0vw;
+    height: 5vw;
+    transition: opacity .3s; -webkit-transition: opacity .3s;
+}
+
+.avatar:hover {
+   opacity: .8;
+   background-color: gray; 
+}
+
 .nav:hover {
-    color: #85d8ff;
-    background-color:#004666;
+    opacity: .5;
 }
 
 .homeSection {
@@ -111,14 +118,6 @@ body {
     max-width: 60vw;
 }
 
-.hList {
-    padding-left: 4vw;
-    padding-right: 4vw;
-    margin:0vw;
-    text-align: center;
-    font-weight: bold;
-}
-
 .home {
     color:#1a1a1a;
     background-color: rgb(252, 252, 252);
@@ -146,6 +145,11 @@ body {
     color: rgb(132, 31, 190);
 }
 
+.signIn {
+    color: purple;
+    background-color: pink;
+}
+
 .bubble {
     margin: 1vw;
     padding: 1vw;
@@ -167,7 +171,7 @@ body {
 
 .slideshow {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     max-width: 90%;
@@ -184,20 +188,11 @@ body {
     margin-top: 2vw;
 }
 
-.icon {
-    max-width: 10vw;
-    padding: 3vw 3vw;
-}
-
 .slides {
     border-radius: .5vw;
     max-width: 30vw;
+    max-height: 20vw;
     margin: 1vw;
-}
-
-.gm {
-    top: 0px; 
-    height: 500px;
 }
 
 h1 {
@@ -205,16 +200,13 @@ h1 {
     padding:0vw;
     margin-bottom: 0vw;
     padding-bottom: 0vw;
-    margin-top:10vw;
-    opacity: .98;
+    margin-top:8vw;
     padding: 2vw;
-    border-radius: .4vw;
 }
 
 h2 {
     font-size: 3vw;
     padding: 0vw;
-    
 }
 
 h3 {
@@ -226,13 +218,13 @@ h3 {
 
 i {
     padding-right: 1vw;
-    padding-left: 1vw;
 }
 
 li {
     font-size: 1.5vw;
-    padding: .5vw;
+    padding: 1vw;
     margin:0vw;
+    line-height: 2.3vw;
 }
 
 p {
@@ -251,10 +243,12 @@ main {
     justify-content: space-around;
 }
 
-
 .learnMore {
-    padding: 0vw; margin: 0vw;
-
+    margin: 0vw;
+    background-color: rgb(210, 243, 255);
+    border-radius: .5vw;
+    width: 20vw;
+    padding-left: .5vw;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -290,12 +284,39 @@ main {
     animation: sweep .5s ease-in-out;
     font-size: 1.2rem;
     line-height: 2vw;
+    background-color: rgb(184, 235, 255);
 }
 
 @keyframes sweep {
     0%    {opacity: 0; margin-left: -10px}
     100%  {opacity: 1; margin-left: 0px}
   }
+
+#mathTree_id {
+    max-width:33vw;
+    margin: 1vw;
+    padding: 1vw;
+    transition: max-width .5s; -webkit-transition: max-width .5s;
+}
+
+#mathTree_id:hover {
+    max-width: 38vw;
+    padding: 0vw;
+    margin: 0vw;
+}
+
+#readingTree_id {
+    max-width:33vw;
+    margin: 1vw;
+    padding: 1vw;
+    transition: max-width .5s; -webkit-transition: max-width .5s;
+}
+
+#readingTree_id:hover {
+    max-width: 38vw;
+    padding: 0vw;
+    margin: 0vw;
+}
 
 #form_id {
     background-color: lightpink;
@@ -308,18 +329,18 @@ main {
 
 .articleTitleEntry {
     width: 60vw;
-    height: 4vw;
-    font-size: 2vw;
-    padding: 1vw;
+    height: 3vw;
+    font-size: 2.5vw;
+    padding: .4vw;
     margin: .3vw;
     font-family: 'Lucida Sans';
 }
 
 .nameEntry {
     width: 60vw;
-    height: 4vw;
-    font-size: 2vw;
-    padding: 1vw;
+    height: 2vw;
+    font-size: 1.5vw;
+    padding: .4vw;
     margin: .3vw;
     font-family: 'Lucida Sans';
 }
@@ -328,7 +349,8 @@ main {
     width: 60vw;
     font-size: 1.15vw;
     font-family: 'Lucida Sans';
-    padding: 1vw;
+    padding: .4vw;
+    margin: .3vw;
     border-radius: 0vw 0vw 1vw 1vw;
 }
 
