@@ -293,14 +293,14 @@ main {
   }
 
 #mathTree_id {
-    max-width:40vw;
+    max-width:39vw;
     margin: 1vw;
     padding: 1vw;
     transition: max-width .5s; -webkit-transition: max-width .5s;
 }
 
 #readingTree_id {
-    max-width:40vw;
+    max-width:39vw;
     margin: 1vw;
     padding: 1vw;
     transition: max-width .5s; -webkit-transition: max-width .5s;
