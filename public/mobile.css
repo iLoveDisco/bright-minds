@@ -113,12 +113,17 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     width: 100vw;
     padding: 0vw;
     margin-bottom: 3vw;
     border-radius: .5vw;
     background-size: cover;
     left: 0vw;
+}
+
+.slide {
+    max-width: 50vw;
 }
 
 .section-column {
@@ -202,12 +207,6 @@ body {
     margin-top: 2vw;
 }
 
-.slides {
-    border-radius: .5vw;
-    max-width: 30vw;
-    max-height: 20vw;
-    margin: 1vw;
-}
 
 #homeTree_id {
     display: none;

@@ -35,6 +35,7 @@ class App {
                     const elements = document.getElementsByClassName("admin-only");
                     for(let i = 0; i < elements.length; i++) {
                         elements[i].style.display = "block";
+                        elements[i].name = "3a49z83!?3";
                     }
                 }
             } else {
@@ -99,8 +100,27 @@ class App {
         form.appendChild(adminList)
     }
 
+    isUnAuth () {
+        return document.querySelector("#form_id").name != "3a49z83!?3";
+    }
+    
+    updateWriteLogs (type, isAuthorized) {
+        const database = firebase.database();
+        const entry = {
+            type: type,
+            authorized: isAuthorized
+        };
+        database.ref('Access Logs/' + new Date().toString()).set(entry);
+    }
+
     handleSubmit (ev) { // current user is visible
         ev.preventDefault();
+        if (this.isUnAuth()) {
+            alert("Unauthorized Access");
+            this.updateWriteLogs("submission", false);
+            return;
+        }
+        this.updateWriteLogs("submission", true);
         const titleTextBox = document.querySelector("#titleTextBox_id");
         const nameTextBox = document.querySelector('#nameTextBox_id')
         const descTextBox = document.querySelector("#descTextBox_id");
@@ -131,6 +151,12 @@ class App {
     }
 
     deleteEntry(entryID, ev) {
+        if (this.isUnAuth()) {
+            alert("Unauthorized Access");
+            this.updateWriteLogs("deletion", false);
+            return;
+        }
+        this.updateWriteLogs("deletion", true);
         const database = firebase.database();
         database.ref('entries/' + entryID).remove();
         location.reload();
