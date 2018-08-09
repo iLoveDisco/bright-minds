@@ -1,48 +1,60 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather');
+
+html {
+    margin: 0vw;
+}
+
 body {
-    margin:0;
-    padding:0;
+    padding: 0vw;
+    margin: 0vw;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+.body {
+    margin:0vw;
+    top: 0vw;
+    padding: 0vw;
     font-family: 'Merriweather', serif;
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
+    overflow: hidden;
+    width: 100vw;
 }
 
 .navbar {
     background-color:rgb(236, 255, 255);
     overflow: hidden;
     position: fixed;
-    top: 0;
-    width: 100%;
-    
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: flex-start;
+    top: 0vw;
+    left: 0vw;
+    margin: 0vw;
+    padding: 0vw;
+    width: 100vw;
+    flex-direction: column;
+    justify-content: center;
     z-index: 10;
-    opacity: .99;
-    box-shadow:0px 0px 1vw grey; 
+    box-shadow:0px 0px 1vw grey;
+    text-align: center;
 }
 
 #navs_id {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-evenly;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     z-index: 10;
-    opacity: .99;
+    width: 100vw;
 }
 
 #logo_id {
-    width:20vw;
-    padding-left:3vw;
+    width:80vw;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
 }
 
 .nav {
@@ -51,9 +63,10 @@ body {
     text-align: center;
     padding: 1.4vw;
     text-decoration: none;
-    font-size: 1.6vw;
+    font-size: 3.5vw;
     transition: opacity .3s; -webkit-transition: opacity .3s;
-    height: 2.2vw;
+    height: 4vw;
+    width: 20vw;
     cursor: pointer;
 }
 
@@ -88,9 +101,11 @@ body {
     align-items: center;
     justify-content: space-around;
     padding: 0vw;
+    margin-top: 30vw;
     margin-bottom: 6vw;
     border-radius: .5vw;
     background-size: cover;
+    width: 100vw;
 }
 
 .section-row {
@@ -98,12 +113,12 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    
+    width: 100vw;
     padding: 0vw;
     margin-bottom: 3vw;
     border-radius: .5vw;
     background-size: cover;
-    
+    left: 0vw;
 }
 
 .section-column {
@@ -153,7 +168,7 @@ body {
     margin: 1vw;
     padding: 2vw;
     border-radius: .8vw;
-    max-width:55vw;
+    max-width:80vw;
 }
 
 .quote {
@@ -194,8 +209,12 @@ body {
     margin: 1vw;
 }
 
+#homeTree_id {
+    display: none;
+}
+
 h1 {
-    font-size: 5vw;
+    font-size: 7vw;
     padding:0vw;
     margin-bottom: 0vw;
     padding-bottom: 0vw;
@@ -204,15 +223,15 @@ h1 {
 }
 
 h2 {
-    font-size: 3vw;
+    font-size: 4.5vw;
     padding: 0vw;
 }
 
 h3 {
-    font-size: 2vw;
+    font-size: 4vw;
     padding: 0vw;
-    margin-top: 2vw;
-    margin-bottom: 2vw;
+    margin-top: 4vw;
+    margin-bottom: 4vw;
 }
 
 i {
@@ -227,19 +246,24 @@ li {
 }
 
 p {
-    font-size: 1.5vw;
+    font-size: 3.5vw;
     padding: .25vw;
-    line-height: 1.9;
+    line-height: 2.5;
     max-width: 65vw;
     word-wrap: break-word;
 }
 
 main {
-    min-width: 99vw;
+    min-width: 20vw;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+
+    width: 100vw;
+    overflow-x: hidden;
+    margin: 0vw;
+    padding: 0vw;
 }
 
 .learnMore {

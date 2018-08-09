@@ -1,11 +1,17 @@
 class App {
     constructor () {
         this.blogList = document.querySelector("#blogList_id");
-        this.admins = ["erictu32@gmail.com", "brightminds111@gmail.com"]
+        this.admins = ["erictu32@gmail.com", "brightminds111@gmail.com"];
+        this.loadStylesheet();
         this.initializeFireBase();
         this.checkUser();
         this.renderItems();
         this.loadEntries();
+    }
+
+    loadStylesheet () {
+        if (window.innerWidth <= 420)
+            $("#indexCSS_id").attr("href", "mobile.css");
     }
 
     initializeFireBase () {
