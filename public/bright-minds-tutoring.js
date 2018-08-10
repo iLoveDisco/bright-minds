@@ -11,7 +11,7 @@ class App {
 
     loadStylesheet () {
         if (window.innerWidth <= 420)
-            $("#indexCSS_id").attr("href", "mobile.css");
+            $("#indexCSS_id").attr("href", "mobile-bright-minds-tutoring.css");
     }
 
     initializeFireBase () {
