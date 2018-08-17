@@ -444,3 +444,19 @@ p {
 .delete {
     background-color: pink;
 }
+
+#newsletter_id {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 90vw;
+    background-color: rgba(234, 199, 255, 1);
+    padding: 3vw;
+}
+
+#newsletter_h2_id {
+    padding: 0vw;
+    margin: 0vw;
+    line-height: 20vw;
+}

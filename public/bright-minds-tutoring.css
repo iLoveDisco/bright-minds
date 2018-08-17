@@ -149,6 +149,11 @@ body {
     color: rgb(132, 31, 190);
 }
 
+.newsletterColor {
+    background-color: rgba(234, 199, 255, 1);
+
+}
+
 .signIn {
     color: purple;
     background-color: pink;
@@ -360,6 +365,21 @@ main {
     width: 60vw;
 }
 
+#newsletter_id {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 50vw;
+    background-color: rgba(234, 199, 255, 1);
+    padding: 3vw;
+}
+
+#newsletter_h2_id {
+    padding: 0vw;
+    margin: 0vw;
+}
+
 #blogList_id {
     display: flex;
     flex-direction: column;
@@ -420,4 +440,19 @@ main {
 
 .delete {
     background-color: pink;
+}
+
+#analytics_id {
+    background-color: pink;
+    color: purple;
+    max-width: 20vw;
+    overflow-x: scroll;
+    text-align: center;
+}
+
+#curve_chart {
+    padding: 0vw;
+    width: 1000vw;
+    height: 500px;
+    
 }

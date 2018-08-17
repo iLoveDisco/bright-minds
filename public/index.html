@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="bright-minds-tutoring.css" id="indexCSS_id"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
 <body>
@@ -33,9 +34,9 @@
                 <ul class = "home bubble">
                     <h2>Excellence Beyond the Classroom</h2>
                 <div class="list">
-                    <h3>~ Individual tutoring ~</h3>
-                    <h3>~ ACT/SAT Test Prep ~</h3>
-                    <h3>~ All-inclusive ~</h3>
+                    <h3>Individual tutoring</h3>
+                    <h3>ACT/SAT Test Prep</h3>
+                    <h3>All-inclusive</h3>
                 </div>
             </div>
 
@@ -201,9 +202,14 @@
         </main>
 
         <main id="blog_id" class="blogColor">
-        <div class="section-row">
-            <h1 class="blogColor">Blog</h1>
-        </div>
+            <div class="section-row">
+                <h1 class="blogColor">Blog</h1>
+            </div>
+            <form id="newsletter_id">
+                <h2 id="newsletter_h2_id">Never miss an update!</h2>
+                <h3>Stay up to date with any offers or changes we have with our programs. Sign up for our newsletter!</h3>
+                <input type="text" placeholder="Email">
+            </form>
         <form id= "form_id" class="section-column admin-only" autocomplete="off" name="test">
             <p>Note: Pink colored items are not visible to the public</p>
             <h2>Add Blog Entry</h2>
@@ -211,7 +217,7 @@
             <input type="text" id= "nameTextBox_id" class="nameEntry" placeholder="Name" required>
             <textarea rows="10" cols="50" class="textBox" id="descTextBox_id"placeholder="Body"></textarea>
             <button id = "send_id" type="submit"> <i class="far fa-paper-plane"></i> </button>
-        </form>
+        </form>    
         <div id="blogList_id" class= "home">
             <div id= "blog_entry_id">
                 <div class="date"></div>
@@ -223,6 +229,9 @@
                 <div name="body" class="body"></div>
             </div>
         </div>
+        <main id="analytics_id" class="admin-only">
+            <div id="curve_chart" class="admin-only"></div>
+        </main>
     </main>
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
 </body>

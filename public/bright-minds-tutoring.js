@@ -1,12 +1,57 @@
 class App {
     constructor () {
         this.blogList = document.querySelector("#blogList_id");
-        this.admins = ["erictu32@gmail.com", "brightminds111@gmail.com"];
+        this.admins = ["erictu32@gmail.com", "brightmind111@gmail.com"];
         this.loadStylesheet();
         this.initializeFireBase();
+        this.updateViewCount();
         this.checkUser();
         this.renderItems();
         this.loadEntries();
+        this.loadChart();
+    }
+
+    updateViewCount () {
+        const today = new Date();
+        let mm = today.getMonth() + 1; // January is 0!
+        if (mm < 10) mm = "0" + mm;
+        const yyyy = today.getFullYear() + "";
+        const entryName = yyyy + mm;
+        let viewCount = 0;
+        const ref = firebase.database().ref("ViewCount/" + entryName);
+        ref.once('value').then(snapshot => {
+            this.increaseViewCount(snapshot.val(), entryName);
+          });
+    }
+
+    increaseViewCount (viewCount, entryName) {
+        firebase.database().ref("ViewCount/" + entryName).set(viewCount + 1);
+    }
+
+    loadChart () {
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(this.drawChart.bind(this));
+        this.drawChart();
+    }
+
+    drawChart() {
+        const data = google.visualization.arrayToDataTable([
+            ['Date', 'View Count'],
+            ['2004',  1000,      400],
+            ['2005',  1170,      460],
+            ['2006',  660,       1120],
+            ['2007',  1030,      540]
+        ]);
+
+        const options = {
+            title: 'Company Performance',
+            curveType: 'function',
+            legend: { position: 'bottom' }
+        };
+
+        const chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
     }
 
     loadStylesheet () {
