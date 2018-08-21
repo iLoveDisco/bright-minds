@@ -320,6 +320,7 @@ main {
 }
 
 #form_id {
+    width: 60vw;
     background-color: lightpink;
     padding-left: 3vw;
     padding-right: 3vw;
@@ -373,11 +374,33 @@ main {
     max-width: 50vw;
     background-color: rgba(234, 199, 255, 1);
     padding: 3vw;
+    margin: 2vw;
+    border-radius: 8px;
 }
 
 #newsletter_h2_id {
     padding: 0vw;
     margin: 0vw;
+}
+
+.newsletterButton {
+    background-color: purple; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1vw;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+#newsletter_input_id {
+    height: 35px;
+    padding-left: 10px;
+    margin-right: 3px;
+    width: 20vw;
 }
 
 #blogList_id {
@@ -436,6 +459,8 @@ main {
 
 .admin-only {
     display: none;
+    background-color: pink;
+    color: purple;
 }
 
 .delete {
@@ -443,16 +468,16 @@ main {
 }
 
 #analytics_id {
-    background-color: pink;
-    color: purple;
-    max-width: 20vw;
+    max-width: 95vw;
     overflow-x: scroll;
     text-align: center;
+    padding: 0vw;
 }
 
 #curve_chart {
     padding: 0vw;
-    width: 1000vw;
-    height: 500px;
-    
+    margin: 0vw;
+    width: 100vw;
+    height: 50vw;
 }
+

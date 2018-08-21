@@ -9,6 +9,14 @@
     <link rel="stylesheet" type="text/css" media="screen" href="bright-minds-tutoring.css" id="indexCSS_id"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124191052-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-124191052-1');
+    </script>
 </head>
 
 <body>
@@ -181,6 +189,9 @@
                     </p>
                 </div>
             </div>
+            <div class="section-row">
+                <h1 class = "parents">Student Progress</h1>
+            </div>
         </main>
 
         <main id="contact_id" class="contact">
@@ -205,36 +216,56 @@
             <div class="section-row">
                 <h1 class="blogColor">Blog</h1>
             </div>
-            <form id="newsletter_id">
+            <div id="newsletter_id">
                 <h2 id="newsletter_h2_id">Never miss an update!</h2>
                 <h3>Stay up to date with any offers or changes we have with our programs. Sign up for our newsletter!</h3>
-                <input type="text" placeholder="Email">
-            </form>
-        <form id= "form_id" class="section-column admin-only" autocomplete="off" name="test">
-            <p>Note: Pink colored items are not visible to the public</p>
-            <h2>Add Blog Entry</h2>
-            <input type="text" id= "titleTextBox_id" class="articleTitleEntry" placeholder="Title" required>
-            <input type="text" id= "nameTextBox_id" class="nameEntry" placeholder="Name" required>
-            <textarea rows="10" cols="50" class="textBox" id="descTextBox_id"placeholder="Body"></textarea>
-            <button id = "send_id" type="submit"> <i class="far fa-paper-plane"></i> </button>
-        </form>    
-        <div id="blogList_id" class= "home">
-            <div id= "blog_entry_id">
-                <div class="date"></div>
-                <button class="delete admin-only id" name="test">
-                    <i class="far fa-trash-alt" style="padding-left: 1vw; padding-top: .5vw; padding-bottom: .5vw"></i>
-                </button>
-                <div class="articleTitle"></div>
-                <div class="displayName"></div>
-                <div name="body" class="body"></div>
+                <div class="section-row">
+                    <input id="newsletter_input_id" type="email" placeholder="Email" required>
+                    <button id="subscribe_id" class="newsletterButton">Subscribe this Email</button>
+                    <button id="unsubscribe_id" class="newsletterButton">Unsubscribe this Email</button>
+                </div>
             </div>
-        </div>
-        <main id="analytics_id" class="admin-only">
-            <div id="curve_chart" class="admin-only"></div>
+            <div class="section-row admin-only">
+                <div class="bubble">
+                    <button id="mailingListButton_id" class="newsletterButton">Show Mailing List</button>
+                </div>
+                <div class="bubble" id="mailing_list_id">
+                </div>
+            </div>
+            <div id="blogList_id" class= "home">
+                <div id= "blog_entry_id">
+                    <div class="date"></div>
+                    <button class="delete admin-only id" name="test">
+                        <i class="far fa-trash-alt" style="padding-left: 1vw; padding-top: .5vw; padding-bottom: .5vw"></i>
+                    </button>
+                    <div class="articleTitle"></div>
+                    <div class="displayName"></div>
+                    <div name="body" class="body"></div>
+                </div>
+            </div>
+            <form id= "form_id" class="section-column admin-only" autocomplete="off" name="test">
+                <h2>Add a Blog Entry</h2>
+                <input type="text" id= "titleTextBox_id" class="articleTitleEntry" placeholder="Title" required>
+                <input type="text" id= "nameTextBox_id" class="nameEntry" placeholder="Name" required>
+                <textarea rows="10" cols="50" class="textBox" id="descTextBox_id"placeholder="Body"></textarea>
+                <button id = "send_id" type="submit"> <i class="far fa-paper-plane"></i> </button>
+            </form>  
         </main>
-    </main>
+        <main class="admin-only">
+            <div class="section-row">
+                <h1 class="admin-only">Analytics</h1>
+            </div>
+            <div class="section-row">
+                <div id="analytics_id">
+                    <div id="curve_chart" class="admin-only"></div>
+                </div>
+            </div>   
+        </main>
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
 </body>
 
-<script src="bright-minds-tutoring.js"></script>
+<script src="items.js"></script>
+<script src="blog.js"></script>
+<script src="analytics.js"></script>
+<script src="newsletter.js"></script>
 </html>
