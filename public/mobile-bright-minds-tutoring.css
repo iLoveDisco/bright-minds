@@ -78,7 +78,7 @@ main {
     padding-left: 2vw;
     padding-right: 2vw;
     text-decoration: none;
-    font-size: 4.2vw;
+    font-size: 3.3vw;
     transition: opacity .3s; -webkit-transition: opacity .3s;
     height: 4vw;
     width: 20vw;
@@ -183,6 +183,10 @@ main {
     max-width:80vw;
     align-items: center;
     justify-content: center;
+}
+
+img {
+    max-width: 75vw;
 }
 
 .quote {
@@ -459,4 +463,172 @@ p {
     padding: 0vw;
     margin: 0vw;
     line-height: 20vw;
+}
+
+#analytics_id {
+    max-width: 95vw;
+    overflow-x: scroll;
+    text-align: center;
+    padding: 0vw;
+}
+
+#curve_chart {
+    padding: 0vw;
+    margin: 0vw;
+    width: 100vw;
+    height: 50vw;
+}
+
+.studentHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.studentDeleteButton {
+    margin-left: 40vw;
+    font-size: 2.5vw;
+    display:inline-block;
+    padding-right: 1.5vw;
+}
+
+.assignmentDeleteButton {
+    display: none;
+    font-size: 2vw;
+    padding-top: .1vw;
+    padding-bottom: .1vw;
+}
+
+#assignmentInput_id {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    
+    padding: 0vw;
+    border-radius: .5vw;
+    background-size: cover;
+    font-size: 2vw;
+}   
+
+
+button {
+    margin: .4vw;
+    cursor: pointer;
+    display:inline-block;
+    border:0.1em solid purple;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-weight:300;
+    color:purple;
+    text-align:center;
+    opacity: 1;
+    transition: all 0.2s;
+    background-color: transparent;
+}
+
+button:hover {
+    opacity: .8;
+
+}
+
+.assignmentList {
+    background-color: rgb(255, 228, 234);
+    padding: 2vw;
+    max-height: 30vw;
+    overflow-y: scroll;
+}
+
+.assignment {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: .2vw;
+}
+
+summary {
+    font-size: 3vw;
+    cursor: pointer;
+    border-radius: 0vw;
+    margin: .2vw;
+}
+
+details {
+    background-color: rgb(255, 218, 224);
+    border-radius: 1vw;
+    padding: 2vw;
+    margin: .2vw;
+}
+
+*:focus {
+    outline: none;
+  }
+
+.students {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.studentRegistration {
+    background-color: rgb(255, 217, 223);
+    margin-left: 2vw;
+}
+
+.studentInput {
+    font-size: 2vw;
+}
+
+input {
+    width: 50vw;
+    font-family: inherit;
+    color: purple;
+    border-color: purple;
+    height: 5vw;
+    border-top: 0vw;
+    border-left: 0vw;
+    border-right: 0vw;
+    background: none;
+    font-size: 5vw;
+    
+    opacity: .7;
+    transition: all .15s ease;
+}
+input:hover {
+    opacity: .8;
+    height: 3.4vw;
+}
+input:focus{
+    background: none;
+    outline: none;
+    opacity: 1;
+    height: 3.4vw;
+}
+
+#registration_button_id {
+    font-size: 2vw;
+    margin: 2vw;
+    padding: 1vw;
+}
+
+#student_list_id {
+    margin-left: 2vw;
+    background-color: rgb(255, 217, 223);
+    border-radius: 1vw;
+}
+
+#student_entry_id {
+    background-color: rgb(250, 245, 246);
+    border-radius: 1vw;
+    padding: 3vw;
+}
+
+.chartButton {
+    width: 100%;
+    font-size: 2vw;
+}
+
+#mailing_list_id {
+    max-width: 80vw;
 }

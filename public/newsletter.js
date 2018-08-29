@@ -6,11 +6,18 @@ class Newsletter {
         this.mailingListButton = document.querySelector("#mailingListButton_id");
         this.renderSubscribe();
         this.renderUnsubscribe();
-        this.renderMailingListButton();
+        this.showMailingList();
+        this.renderCopyButton();
     }
 
-    isUnAuth () {
-        return document.querySelector("#form_id").name != "3a49z83!?3";
+    renderCopyButton () {
+        document.querySelector('.copyButton').addEventListener('click',this.copyToClipboard.bind(this));
+    }
+
+    copyToClipboard () {
+        document.querySelector('#mailing_list_id').select();
+        document.execCommand("copy");
+        document.querySelector('.copyButton').textContent = 'Emails are copied onto clipboard! Ctrl + V to paste'
     }
 
     renderSubscribe () {
@@ -26,18 +33,16 @@ class Newsletter {
     }
 
     showMailingList() {
-        if (this.isUnAuth()) {
-            alert('Unauthorized Access');
-            return;
-        }
+        document.querySelector('.copyButton').style.display = 'block';
         const ref = firebase.database().ref();
         ref.once('value').then(snapshot => {
+            if (blog.isUnAuth()) return;
             const database = snapshot.val()['Subscribed Emails'];
             const toDisplay = [];
             Object.keys(database).forEach(key => {
                 toDisplay.push(database[key]);
             })
-            this.mailingList.textContent = toDisplay.toString();
+            this.mailingList.value = toDisplay.toString();
         })
     }
 
@@ -54,9 +59,13 @@ class Newsletter {
         }
     }
 
+    disableButton (button) {
+        button.disabled = true;
+        button.style.opacity = .8;
+    }
+
     addEmail (entry) {
-        this.subscribeButton.disabled = true;
-        this.subscribeButton.style.opacity = .8;
+        this.disableButton(this.subscribeButton);
         const id = new Date().getTime();
         const ref = firebase.database().ref();
         ref.once('value').then(snapshot => {
@@ -70,13 +79,11 @@ class Newsletter {
             }
             firebase.database().ref('Subscribed Emails/' + id).set(entry);
             this.subscribeButton.textContent = 'Subscribed!';
-            
         })
     }
 
     removeEmail (entry) {
-        this.unsubscribeButton.disabled = true;
-        this.unsubscribeButton.style.opacity = .8;
+        this.disableButton(this.unsubscribeButton);
         const ref = firebase.database().ref();
         ref.once('value').then(snapshot => {
             const database = snapshot.val()['Subscribed Emails'];
@@ -91,8 +98,6 @@ class Newsletter {
             this.unsubscribeButton.textContent = 'Email not found';
         });
     }
-
-    
 }
 
 const app4 = new Newsletter ();

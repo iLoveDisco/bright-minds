@@ -48,4 +48,4 @@ class Analytics {
     }
 }
 
-const app2 = new Analytics();
+const analytics = new Analytics();

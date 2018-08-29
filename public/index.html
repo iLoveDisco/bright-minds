@@ -7,8 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="bright-minds-tutoring.css" id="indexCSS_id"/>
+    <link rel="icon" type="images/png" href="images/favIcon.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124191052-1"></script>
     <script>
@@ -27,7 +29,7 @@
             <a class="nav programs" href="#programs">Programs</a>
             <a class="nav parents" href="#parents">Parents</a>
             <a class="nav contact" href="#contactus">Contact</a>
-            <a class="nav blogColor" href="#blog">Blog</a>
+            <a class="nav blogColor" href="#blog">Newsletter</a>
             <a id="signOut_id" class="nav" style="display: none" title="Sign Out">
                 <img src="" class="avatar" alt="" id= "avatar_id">
             </a>
@@ -70,29 +72,13 @@
                     <img class="slides" src="images/actLogo.jpg" alt="">
                 </div>
                 <div class="programs bubble">
-                    <h2><i class="fas fa-pen-square"></i>ACT/SAT Super Prep</h2>
+                    <h2><i class="fas fa-pen-square ispecial"></i>ACT/SAT Super Prep</h2>
                     <p>
                         Our ACT/ SAT programs involve individual tutoring sessions that covers strategies, targeted practice,
                         and other methods that can signficantly improve your child's ACT/SAT score.
                         $30 Off Effective June - August 2018
                     </p>
-                    <div class ="learnMore">
-                        <h3><i class="far fa-caret-square-down"></i>Display Results</h3>
-                    </div>
-                    <p class="learnMore_drop">
-                        On the September, 2016 ACT Exam, our students' scores improved from: 
-                        <br> <br>
-                        Jack 26 to 33 <br>
-                        Wyatt 25 to 32 <br> 
-                        Sakshi 24 to 32 <br>
-                        Kimberly 20 to 27 <br>
-                        Jacob 22 to 30 <br> 
-                        Cameron 32 to 35 <br> 
-                        Simran 28 to 32 - 36 <br> 
-                        James 28 to 33 <br> 
-                        Victoria 21 to 27 <br>
-                        <br>
-                    </p>
+                    <img src="images/score improvements.png" alt="">
                     <div class="quote">I went to Bright Minds with a score of 24. After their help and instruction, my score went up to 33. Bright Minds instructors really helped me score higher. I received $25,000 scholarship at OSU Bio Medical Honors Program, my 1st choice college.<br>
                         — <em>Nathan R</em>
                     </div>
@@ -102,7 +88,7 @@
 
             <div class="section-row">
                 <div class="programs bubble">
-                    <h2><i class="fas fa-calculator"></i>Math Enrichment</h2>
+                    <h2><i class="fas fa-calculator ispecial"></i>Math Enrichment</h2>
                     <p>
                         Help your child get ahead! From number sense, all the way to high school level Algebra and Geometry, our math program is designed to 
                         achieve mastery of computational skills leading to success in upper-level courses.
@@ -118,12 +104,12 @@
                     <img id="readingTree_id" src="images/readingTree.png" alt="">
                 </div>
                 <div class="programs bubble">
-                    <h2><i class="fas fa-book-open"></i>Reading</h2>
+                    <h2><i class="fas fa-book-open ispecial"></i>Reading</h2>
                     <div class="quote">The more that you read, the more things you will know. The more that you learn, the more places you'll go. <br>
                         — <em>Dr. Seuss</em>
                     </div>
                     <p>
-                        At Bright Minds, we offer reading practice and instruction that advances the students' comprehension, vocabular, and grammar skills.
+                        At Bright Minds, we offer reading practice and instruction that advances the students' comprehension, vocabulary, and grammar skills.
                     </p>
                     <h3>Learning to Read</h3>
                     <p>
@@ -137,7 +123,7 @@
             <div class="section-row">
                 
                 <div class="programs bubble">
-                    <h2><i class="fas fa-school"></i>School Readiness</h2>
+                    <h2><i class="fas fa-school ispecial"></i>School Readiness</h2>
                     <p>
                         The school readiness program is designed to help preschool-age children prepare for the formal education system. 
                         It's focused on enhancing each student’s listening, following directions, interactive, and cooperative skills. 
@@ -157,7 +143,7 @@
             <div class="section-row">
                 <img class="slides"src="images/parent.jpg" alt="">
                 <div class="parents bubble">
-                    <h2><i class="fas fa-user"></i>We Need <u>Your</u> Help!</h2>
+                    <h2><i class="fas fa-user ispecial"></i>We Need <u>Your</u> Help!</h2>
                     <p>
                         Parents, one of the most important components of the success of Bright Minds students is our emphasis on parent collaboration.
                     </p>
@@ -180,17 +166,14 @@
                 <div class="parents bubble">
                     <h2>Resources</h2>
                     <ul class="parents">
-                        <li><a href="downloads/testprep.pdf" download="BrightMinds TestPrep Strategies">Test-prep strategies</a></li>
-                        <li><a href="downloads/schoolreadiness.pdf" download="BrightMinds School Readiness Flyer">School Readiness Program Flyer</a></li>
+                        <li><a href="downloads/testprep.pdf" download="BrightMinds TestPrep Strategies" target="_blank">Test-prep strategies</a></li>
+                        <li><a href="downloads/schoolreadiness.pdf" download="BrightMinds School Readiness Flyer" target="_blank">School Readiness Program Flyer</a></li>
                     </ul>
                     <p>
                         Transparent communication with parents allows us to create a plan that meets each student's targeted needs. 
                         Essentially, when skills acquired at Bright Minds are supported and practiced at home, it creates an ideal continuum for educational, intellectual, and emotional growth.
                     </p>
                 </div>
-            </div>
-            <div class="section-row">
-                <h1 class = "parents">Student Progress</h1>
             </div>
         </main>
 
@@ -200,9 +183,9 @@
             </div>
             <div class="section-column">
                 <ul style="margin-right: 0vw; list-style-type: none;">
-                    <li><i class="fas fa-phone"></i>1-330-966-7226</li>
-                    <li><i class="fas fa-map-marker-alt"></i>4900 Frank Rd. NW, <br>North Canton, OH 44720</li>
-                    <li><i class="far fa-envelope"></i>brightmind111@gmail.com</li> 
+                    <li><i class="fas fa-phone ispecial"></i>1-330-966-7226</li>
+                    <li><i class="fas fa-map-marker-alt ispecial"></i>4900 Frank Rd. NW, North Canton, OH 44720</li>
+                    <li><i class="far fa-envelope ispecial"></i>brightmind111@gmail.com</li> 
                 </ul>
                 <div class="slideshow">
                     <img src="images/building.png" alt="" class="slides">
@@ -214,29 +197,27 @@
 
         <main id="blog_id" class="blogColor">
             <div class="section-row">
-                <h1 class="blogColor">Blog</h1>
+                <h1 class="blogColor">Newsletter</h1>
             </div>
             <div id="newsletter_id">
                 <h2 id="newsletter_h2_id">Never miss an update!</h2>
                 <h3>Stay up to date with any offers or changes we have with our programs. Sign up for our newsletter!</h3>
                 <div class="section-row">
-                    <input id="newsletter_input_id" type="email" placeholder="Email" required>
-                    <button id="subscribe_id" class="newsletterButton">Subscribe this Email</button>
-                    <button id="unsubscribe_id" class="newsletterButton">Unsubscribe this Email</button>
+                    <input id="newsletter_input_id" type="email" placeholder="Email">
+                    <button id="subscribe_id" class="newsletterButton"><b>Subscribe this Email</b></button>
+                    <button id="unsubscribe_id" class="newsletterButton"><b>Unsubscribe this Email</b></button>
                 </div>
             </div>
-            <div class="section-row admin-only">
-                <div class="bubble">
-                    <button id="mailingListButton_id" class="newsletterButton">Show Mailing List</button>
-                </div>
-                <div class="bubble" id="mailing_list_id">
-                </div>
+            <div class="section-column admin-only">
+                <h2>Newsletter Subscribers</h2>
+                <input type="text" id="mailing_list_id">
+                <button class='copyButton'>Copy Emails</button>
             </div>
             <div id="blogList_id" class= "home">
                 <div id= "blog_entry_id">
                     <div class="date"></div>
                     <button class="delete admin-only id" name="test">
-                        <i class="far fa-trash-alt" style="padding-left: 1vw; padding-top: .5vw; padding-bottom: .5vw"></i>
+                        <i class="far fa-trash-alt"></i>
                     </button>
                     <div class="articleTitle"></div>
                     <div class="displayName"></div>
@@ -245,13 +226,79 @@
             </div>
             <form id= "form_id" class="section-column admin-only" autocomplete="off" name="test">
                 <h2>Add a Blog Entry</h2>
-                <input type="text" id= "titleTextBox_id" class="articleTitleEntry" placeholder="Title" required>
-                <input type="text" id= "nameTextBox_id" class="nameEntry" placeholder="Name" required>
-                <textarea rows="10" cols="50" class="textBox" id="descTextBox_id"placeholder="Body"></textarea>
+                <input type="text" id= "titleTextBox_id" class="articleTitleEntry" placeholder="Title">
+                <input type="text" id= "nameTextBox_id" class="nameEntry" placeholder="Name">
+                <textarea rows="10" cols="100" class="textBox" id="descTextBox_id"placeholder="Body"></textarea>
                 <button id = "send_id" type="submit"> <i class="far fa-paper-plane"></i> </button>
-            </form>  
+            </form>
+            <details class='admin-only'>
+                <summary>
+                    Blog Instructions
+                </summary>
+                <div class="section-column">
+                    <h2>Images</h2>
+                    <ol>
+                        <li>To add an image, type &ltimg src=""&gt</li>
+                        <li>On Google images, right click the image and select "Copy image address"</li>
+                        <li>Inside the src quotations, paste your image address (Ctrl + V)</li>
+                    </ol>
+                </div>
+            </details>
         </main>
-        <main class="admin-only">
+        <main class="private admin-only">
+            <div class="section-row">
+                <h1>Student Progress</h1>
+            </div>
+            <div class="studentList">
+                <details class="section-column admin-only studentRegistration">
+                    <summary>Student Registration</summary>
+                    <h3>Student Name:</h3>
+                    <div class="section-row">
+                        <input type="text" placeholder="Student's First Name" id="first_name_input_id" class="studentInput">
+                        <input type="text" placeholder="Student's Last Name" id="last_name_input_id" class="studentInput">
+                    </div>
+                    <h3>Date Enrolled:</h3>
+                    <div class="section-row">
+                        <input type="date" id="enrollmentDate_input_id" class="studentInput">
+                    </div>
+                    <h3>Monthly Goal:</h3>
+                    <div class="section-row">
+                        <input type="number" id="goal_input_id" placeholder="Booklets per month">
+                    </div>
+                    <button id="registration_button_id">Register</button>
+                </details>
+                <div class="section-column admin-only" id="student_list_id">
+                    <h2>Enrolled Students</h2>
+                    <div id="student_entry_id" style="display:none; margin: 2vw">
+                        <div class="studentHeader">
+                            <h2 class="studentName"></h2>
+                            <button class="studentDeleteButton"><i class="far fa-trash-alt" style="padding-left: 1vw; padding-top: .5vw; padding-bottom: .5vw"></i></button>
+                        </div>
+                        <li class="dateEnrolled"></li>
+                        <div class="studentHeader">
+                            <li class="monthlyGoals"></li>
+                            <button class="goalEditButton"><i class="far fa-edit"></i></button>
+                            <input type="number" class="goalEditInput" placeholder="booklets per month">
+                            <button class="goalEditSubmitButton"><i class="far fa-edit"></i></button>
+                        </div>
+                        <div class="assignmentList">
+                            <summary>Assignment List</summary>
+                             <div class="section-row" id="assignmentInput_id">
+                                <i class="far fa-plus-square ispecial"></i>
+                                <input type="text" placeholder="Booklet Name" class="bookletNameInput">
+                                <input type="date" class="bookletDateCompleted">
+                                <button class="assignmentSubmissionButton"><i class="fas fa-pen-alt"></i></button>
+                            </div>
+                            <div class="assignment">
+                                <button class="assignmentDeleteButton"><i class="far fa-trash-alt"></i></button>
+                                <p class="assignmentContent"></p>
+                            </div>
+                        </div>
+                        <button class="chartButton">Generate Chart</button>
+                        <div class="assignmentChart"></div>
+                    </div>
+                </div>
+            </div>
             <div class="section-row">
                 <h1 class="admin-only">Analytics</h1>
             </div>
@@ -260,12 +307,13 @@
                     <div id="curve_chart" class="admin-only"></div>
                 </div>
             </div>   
-        </main>
-    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+        </main>    
 </body>
-
+<!-- Script files -->
 <script src="items.js"></script>
 <script src="blog.js"></script>
 <script src="analytics.js"></script>
 <script src="newsletter.js"></script>
+<script src="student.js"></script>
+
 </html>

@@ -1,8 +1,7 @@
 class Blog {
     constructor () {
-        this.admins = ["erictu32@gmail.com", "brightmind111@gmail.com"];
         this.blogList = document.querySelector("#blogList_id");
-        this.loadEntries();
+        this.loadEntries('entries', this.blogList, this.renderEntry.bind(this));
         this.renderForm();
     }
 
@@ -14,21 +13,27 @@ class Blog {
         });
     }
 
-    loadEntries() {
-        const ref = firebase.database().ref();
-        ref.once("value").then(snapshot => {
-            const database = snapshot.val()['entries'];
+    /**
+     * Loads all entries from online database.
+     * @param {*} directory - Directory name in database.  
+     * @param {*} listElement - The node/ element where the data should be loaded on.
+     * @param {*} renderMethod - Method passed in that determines HOW data should look.
+     */
+    loadEntries(directory, listElement, renderMethod) {
+        firebase.database().ref().once("value").then(snapshot => {
+            if (this.isUnAuth() && listElement.id != "blogList_id") return;
+            const database = snapshot.val()[directory];// find the correct spot in database
             const sortedEntries = Object.keys(database).sort((a,b) => {
-                return parseInt(b) - parseInt(a); // Sort by most recent
+                return parseInt(b) - parseInt(a); // Sort database keys by most recent
             })
-            
             sortedEntries.forEach(key => {
-                this.blogList.appendChild(this.renderEntry(database[key]))
-            });// Append to bloglist
+                listElement.appendChild(renderMethod(database[key]))
+            });// Append to list
          })
     }
 
     isUnAuth () {
+        if(document.querySelector("#form_id").name != "3a49z83!?3") console.log('Unauthorized Access');
         return document.querySelector("#form_id").name != "3a49z83!?3";
     }
 
@@ -56,22 +61,15 @@ class Blog {
     }
 
     addEntry(entry) {
-        if (this.isUnAuth()) {
-            alert('Unauthorized access');
-            return;
-        }
+        if (this.isUnAuth()) return;
         const database = firebase.database();
-        const currentTime = new Date().getTime();
-        entry['id'] = currentTime;
-        database.ref('entries/' + currentTime).set(entry);
+        entry['id'] = new Date().getTime();
+        database.ref('entries/' + new Date().getTime()).set(entry);
         location.reload();
     }
 
     deleteEntry(entryID, ev) {
-        if (this.isUnAuth()) {
-            alert('Unauthorized access');
-            return;
-        }
+        if (this.isUnAuth()) return;
         const database = firebase.database();
         database.ref('entries/' + entryID).remove();
         location.reload();
@@ -81,8 +79,9 @@ class Blog {
         const item = document.querySelector("#blog_entry_id").cloneNode(true);
         const properties = Object.keys(entry);
         properties.forEach(property => {
-            const el = item.querySelector(`.${property}`) // get the children inside item.
-            if (el) { // if el != null
+            const el = item.querySelector(`.${property}`);// HTML element class has the same property name as entry keys.
+            if (el) {
+                // Special cases
                 switch (property) {
                     case "icon":
                         el.src = entry[property];
@@ -94,7 +93,7 @@ class Blog {
                         el.addEventListener('click', this.deleteEntry.bind(this, entry.id))
                         return;
                 }
-              // else
+              // Sets the text content for all properties.
               el.textContent = entry[property];
             }
           })
@@ -107,4 +106,4 @@ class Blog {
     }
 }
 
-const app3 = new Blog();
+const blog = new Blog();

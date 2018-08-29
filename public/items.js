@@ -7,13 +7,21 @@ class Items {
         this.renderItems();
     }
 
+    saveScrollPosition () {
+        window.sessionStorage.setItem('scrollPos', window.scrollY + "");
+    }
+
+    loadScrollPosition () {
+        const scrollY = parseInt(window.sessionStorage.getItem('scrollPos'));
+        window.scrollTo(0, scrollY);
+    }
+
     loadStylesheet () {
-        if (window.innerWidth <= 420)
+        if (window.innerWidth <= 600)
             $("#indexCSS_id").attr("href", "mobile-bright-minds-tutoring.css");
     }
 
     initializeFireBase () {
-        // Initialize Firebase
         const config = {
             
         };
@@ -46,7 +54,6 @@ class Items {
 
     renderItems() {
         this.renderNavButtons();
-        this.renderDropDown();
         this.renderSignIn();
         this.renderSignOut();
     }
@@ -63,13 +70,6 @@ class Items {
     scrollIntoView (el_id) {
         const element = document.querySelector(`#${el_id}`)
         element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
-    }
-    
-    renderDropDown () {
-        $('.learnMore').click(function (event) {
-            event.preventDefault();
-            $(this).next('.learnMore_drop').toggleClass('in');
-        })    
     }
 
     signIn () {
@@ -94,5 +94,6 @@ class Items {
     }
 }
 
-const app = new Items()
+const items = new Items()
+
 
